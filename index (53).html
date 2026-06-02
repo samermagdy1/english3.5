@@ -1,0 +1,3890 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4A90D9">
+  <title>Cambridge Primary English — Grade 3 & 5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --sky: #4A90D9;
+      --mint: #4BC8A0;
+      --sun: #FFD740;
+      --coral: #FF6B6B;
+      --grape: #9B59B6;
+      --peach: #FF9F68;
+      --bg: #F0F7FF;
+      --card: #fff;
+      --text: #2D3748;
+      --muted: #718096;
+      --radius: 18px;
+      --shadow: 0 4px 20px rgba(74, 144, 217, 0.13);
+      --shadow-hover: 0 8px 32px rgba(74, 144, 217, 0.22);
+      --transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .dark {
+      --bg: #1a1f2e;
+      --card: #242b3d;
+      --text: #e8edf5;
+      --muted: #94a3b8;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s
+    }
+
+    h1,
+    h2,
+    h3,
+    .title {
+      font-family: 'Fredoka One', cursive
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      font-family: 'Nunito', sans-serif
+    }
+
+    input,
+    textarea {
+      font-family: 'Nunito', sans-serif
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.4)
+      }
+
+      60% {
+        transform: scale(1.1)
+      }
+
+      80% {
+        transform: scale(0.95)
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0)
+      }
+
+      20% {
+        transform: translateX(-8px)
+      }
+
+      40% {
+        transform: translateX(8px)
+      }
+
+      60% {
+        transform: translateX(-6px)
+      }
+
+      80% {
+        transform: translateX(6px)
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.06)
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-12px)
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes countUp {
+      from {
+        opacity: 0;
+        transform: scale(0.5)
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    @keyframes stagger {
+      from {
+        opacity: 0;
+        transform: translateX(-20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0
+      }
+    }
+
+    @keyframes mascotJump {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0)
+      }
+
+      40% {
+        transform: translateY(-20px) rotate(-10deg)
+      }
+
+      70% {
+        transform: translateY(-8px) rotate(5deg)
+      }
+    }
+
+    @keyframes glitter {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 0.6;
+        transform: scale(0.8)
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1
+      }
+    }
+
+    @keyframes flipCard {
+      0% {
+        transform: rotateY(0)
+      }
+
+      100% {
+        transform: rotateY(180deg)
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.5s ease forwards
+    }
+
+    .bounce-in {
+      animation: bounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards
+    }
+
+    .stagger-1 {
+      animation: stagger 0.4s 0.1s both
+    }
+
+    .stagger-2 {
+      animation: stagger 0.4s 0.2s both
+    }
+
+    .stagger-3 {
+      animation: stagger 0.4s 0.3s both
+    }
+
+    .stagger-4 {
+      animation: stagger 0.4s 0.4s both
+    }
+
+    .stagger-5 {
+      animation: stagger 0.4s 0.5s both
+    }
+
+    .stagger-6 {
+      animation: stagger 0.4s 0.6s both
+    }
+
+    .stagger-7 {
+      animation: stagger 0.4s 0.7s both
+    }
+
+    .stagger-8 {
+      animation: stagger 0.4s 0.8s both
+    }
+
+    .stagger-9 {
+      animation: stagger 0.4s 0.9s both
+    }
+
+    /* ===== SCREENS ===== */
+    .screen {
+      display: none;
+      min-height: 100vh
+    }
+
+    .screen.active {
+      display: block
+    }
+
+    /* ===== LANDING ===== */
+    #landing {
+      background: linear-gradient(135deg, #4A90D9 0%, #9B59B6 50%, #4BC8A0 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .landing-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15
+    }
+
+    .bubble-1 {
+      width: 300px;
+      height: 300px;
+      background: white;
+      top: -100px;
+      left: -100px;
+      animation: float 6s ease-in-out infinite
+    }
+
+    .bubble-2 {
+      width: 200px;
+      height: 200px;
+      background: var(--sun);
+      bottom: -60px;
+      right: -60px;
+      animation: float 8s ease-in-out infinite 2s
+    }
+
+    .bubble-3 {
+      width: 150px;
+      height: 150px;
+      background: var(--coral);
+      top: 40%;
+      left: 80%;
+      animation: float 7s ease-in-out infinite 1s
+    }
+
+    .landing-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem
+    }
+
+    .landing-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 7vw, 4.5rem);
+      color: white;
+      text-shadow: 3px 4px 0 rgba(0, 0, 0, 0.2);
+      margin-bottom: 0.5rem;
+      animation: bounceIn 0.8s both
+    }
+
+    .landing-sub {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      margin-bottom: 2.5rem;
+      font-weight: 700;
+      animation: fadeInUp 0.8s 0.3s both
+    }
+
+    .grade-cards {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center
+    }
+
+    .grade-card {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem 2.5rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      min-width: 180px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      animation: fadeInUp 0.7s both
+    }
+
+    .grade-card:nth-child(1) {
+      animation-delay: 0.5s
+    }
+
+    .grade-card:nth-child(2) {
+      animation-delay: 0.7s
+    }
+
+    .grade-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25)
+    }
+
+    .grade-card .emoji {
+      font-size: 3.5rem;
+      display: block;
+      margin-bottom: 0.5rem
+    }
+
+    .grade-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem
+    }
+
+    .grade-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600
+    }
+
+    .grade-3-card h2 {
+      color: var(--sky)
+    }
+
+    .grade-5-card h2 {
+      color: var(--grape)
+    }
+
+    /* ===== TOP BAR ===== */
+    .top-bar {
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background 0.3s
+    }
+
+    .top-bar-logo {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      color: var(--sky)
+    }
+
+    .top-bar-grade {
+      background: var(--sky);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700
+    }
+
+    .top-bar-grade.grade5 {
+      background: var(--grape)
+    }
+
+    .top-bar-progress {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem
+    }
+
+    .progress-bar-wrap {
+      flex: 1;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 0.5s ease;
+      background: linear-gradient(90deg, var(--mint), var(--sky))
+    }
+
+    .progress-text {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap
+    }
+
+    .top-bar-btns {
+      display: flex;
+      gap: 0.5rem
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none
+    }
+
+    .icon-btn:hover {
+      background: var(--sky);
+      color: white;
+      transform: scale(1.1)
+    }
+
+    /* ===== MAIN LAYOUT ===== */
+    .app-container {
+      display: flex;
+      min-height: calc(100vh - 60px)
+    }
+
+    .sidebar {
+      width: 260px;
+      background: var(--card);
+      border-right: 2px solid var(--bg);
+      padding: 1rem;
+      position: sticky;
+      top: 60px;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      transition: transform 0.3s, background 0.3s;
+      z-index: 50
+    }
+
+    .sidebar-section {
+      margin-bottom: 1.5rem
+    }
+
+    .sidebar-section h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      padding: 0 0.5rem;
+      margin-bottom: 0.5rem
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text)
+    }
+
+    .nav-item:hover {
+      background: var(--bg);
+      transform: translateX(4px)
+    }
+
+    .nav-item.active {
+      background: linear-gradient(135deg, var(--sky), #6CA0DC);
+      color: white
+    }
+
+    .nav-item .nav-icon {
+      font-size: 1.1rem;
+      min-width: 24px
+    }
+
+    .nav-item .nav-badge {
+      margin-left: auto;
+      background: var(--coral);
+      color: white;
+      font-size: 0.65rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 20px;
+      font-weight: 800
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-x: hidden
+    }
+
+    /* ===== UNITS GRID ===== */
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem
+    }
+
+    .unit-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden
+    }
+
+    .unit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      border-radius: var(--radius) var(--radius) 0 0
+    }
+
+    .unit-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: var(--shadow-hover)
+    }
+
+    .unit-card .unit-number {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.6;
+      margin-bottom: 0.3rem
+    }
+
+    .unit-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem
+    }
+
+    .unit-card .unit-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap
+    }
+
+    .unit-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-weight: 700
+    }
+
+    .unit-progress-ring {
+      position: absolute;
+      top: 1rem;
+      right: 1rem
+    }
+
+    /* Term colors */
+    .term1-card::before {
+      background: linear-gradient(90deg, #4BC8A0, #4A90D9)
+    }
+
+    .term2-card::before {
+      background: linear-gradient(90deg, #FF9F68, #FF6B6B)
+    }
+
+    .term3-card::before {
+      background: linear-gradient(90deg, #9B59B6, #6CA0DC)
+    }
+
+    /* ===== SECTION NAV ===== */
+    .section-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      background: var(--card);
+      padding: 0.6rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow)
+    }
+
+    .tab-btn {
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: transparent;
+      color: var(--muted);
+      transition: all 0.2s
+    }
+
+    .tab-btn.active {
+      background: var(--sky);
+      color: white;
+      transform: scale(1.03)
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: var(--bg)
+    }
+
+    /* ===== VOCAB SECTION ===== */
+    .vocab-controls {
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem
+    }
+
+    .vocab-counter {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--sky)
+    }
+
+    .filter-btn {
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: var(--bg);
+      color: var(--muted);
+      transition: all 0.2s
+    }
+
+    .filter-btn.active {
+      background: var(--sky);
+      color: white
+    }
+
+    .flashcard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem
+    }
+
+    .flashcard {
+      perspective: 800px;
+      height: 180px;
+      cursor: pointer
+    }
+
+    .flashcard-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative
+    }
+
+    .flashcard.flipped .flashcard-inner {
+      transform: rotateY(180deg)
+    }
+
+    .flashcard-front,
+    .flashcard-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      box-shadow: var(--shadow)
+    }
+
+    .flashcard-front {
+      background: linear-gradient(135deg, var(--sky), #6CA0DC);
+      color: white
+    }
+
+    .flashcard-back {
+      background: var(--card);
+      transform: rotateY(180deg);
+      border: 2px solid var(--sky)
+    }
+
+    .card-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 0.4rem
+    }
+
+    .card-word {
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-align: center
+    }
+
+    .card-phonetic {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      margin-top: 0.2rem
+    }
+
+    .card-arabic {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--sky);
+      text-align: center;
+      margin-bottom: 0.3rem;
+      direction: rtl
+    }
+
+    .card-example {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      font-style: italic
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.5rem
+    }
+
+    .speak-btn,
+    .save-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      border: none
+    }
+
+    .speak-btn {
+      background: rgba(74, 144, 217, 0.15);
+      color: var(--sky)
+    }
+
+    .speak-btn:hover {
+      background: var(--sky);
+      color: white;
+      transform: scale(1.1)
+    }
+
+    .save-btn {
+      background: rgba(75, 200, 160, 0.15);
+      color: var(--mint)
+    }
+
+    .save-btn.saved {
+      background: var(--mint);
+      color: white
+    }
+
+    /* ===== FLASHCARD MODE ===== */
+    .flashcard-mode-wrap {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.5rem
+    }
+
+    .flashcard-mode-wrap.open {
+      display: flex
+    }
+
+    .fm-card {
+      width: min(400px, 90vw);
+      height: 280px;
+      cursor: pointer;
+      perspective: 800px
+    }
+
+    .fm-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative
+    }
+
+    .fm-card.flipped .fm-inner {
+      transform: rotateY(180deg)
+    }
+
+    .fm-front,
+    .fm-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4)
+    }
+
+    .fm-front {
+      background: linear-gradient(135deg, #4A90D9, #9B59B6);
+      color: white
+    }
+
+    .fm-back {
+      background: var(--card);
+      transform: rotateY(180deg)
+    }
+
+    .fm-front .card-emoji {
+      font-size: 4rem
+    }
+
+    .fm-front .card-word {
+      font-size: 2rem
+    }
+
+    .fm-nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center
+    }
+
+    .fm-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      backdrop-filter: blur(4px)
+    }
+
+    .fm-btn:hover {
+      background: white;
+      color: var(--sky);
+      transform: scale(1.1)
+    }
+
+    .fm-counter {
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      min-width: 80px;
+      text-align: center
+    }
+
+    /* ===== GRAMMAR SECTION ===== */
+    .grammar-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.2rem;
+      border-left: 5px solid var(--sky);
+      animation: stagger 0.4s both
+    }
+
+    .grammar-card h3 {
+      color: var(--sky);
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem
+    }
+
+    .grammar-explanation {
+      margin-bottom: 0.8rem
+    }
+
+    .grammar-arabic {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 0.6rem 1rem;
+      direction: rtl;
+      text-align: right;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem
+    }
+
+    .grammar-examples {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem
+    }
+
+    .grammar-example {
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border-radius: 8px;
+      font-size: 0.9rem
+    }
+
+    .grammar-example .highlight {
+      color: var(--sky);
+      font-weight: 800
+    }
+
+    .grammar-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.8rem 0;
+      font-size: 0.88rem
+    }
+
+    .grammar-table th {
+      background: var(--sky);
+      color: white;
+      padding: 0.5rem 0.8rem;
+      text-align: left
+    }
+
+    .grammar-table td {
+      padding: 0.5rem 0.8rem;
+      border-bottom: 1px solid var(--bg)
+    }
+
+    .grammar-table tr:nth-child(even) td {
+      background: var(--bg)
+    }
+
+    /* ===== QUIZ SECTION ===== */
+    .quiz-header {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 1rem
+    }
+
+    .quiz-progress-wrap {
+      flex: 1
+    }
+
+    .quiz-progress-bar {
+      height: 10px;
+      background: var(--bg);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 0.3rem
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--mint), var(--sky));
+      transition: width 0.5s ease
+    }
+
+    .quiz-count {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted)
+    }
+
+    .quiz-score-display {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--sky)
+    }
+
+    .question-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      animation: fadeInUp 0.4s both
+    }
+
+    .question-type {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      font-weight: 700
+    }
+
+    .question-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      line-height: 1.5
+    }
+
+    .question-emoji {
+      font-size: 2rem;
+      margin-bottom: 0.5rem
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      margin-bottom: 1rem
+    }
+
+    .option-btn {
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      background: var(--bg);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: left;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+      line-height: 1.4
+    }
+
+    .option-btn:hover:not(:disabled) {
+      background: rgba(74, 144, 217, 0.12);
+      border-color: var(--sky);
+      transform: translateY(-2px)
+    }
+
+    .option-btn.correct {
+      background: #d4edda;
+      border-color: #28a745;
+      color: #155724 !important;
+      animation: bounceIn 0.4s both
+    }
+
+    .option-btn.wrong {
+      background: #f8d7da;
+      border-color: #dc3545;
+      color: #721c24 !important;
+      animation: shake 0.5s both
+    }
+
+    .option-btn:disabled {
+      cursor: default
+    }
+
+    .fill-blank-input {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      border: 2px solid var(--bg);
+      background: var(--bg);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: all 0.2s;
+      margin-bottom: 0.8rem;
+      -webkit-appearance: none
+    }
+
+    .fill-blank-input:focus {
+      outline: none;
+      border-color: var(--sky);
+      background: white
+    }
+
+    .check-btn {
+      padding: 0.8rem 2rem;
+      border-radius: 20px;
+      background: var(--sky);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: var(--transition)
+    }
+
+    .check-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(74, 144, 217, 0.4)
+    }
+
+    .feedback-box {
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      margin-top: 0.8rem;
+      animation: fadeInUp 0.3s both
+    }
+
+    .feedback-box.correct-fb {
+      background: #d4edda;
+      border-left: 4px solid #28a745
+    }
+
+    .feedback-box.wrong-fb {
+      background: #f8d7da;
+      border-left: 4px solid #dc3545
+    }
+
+    .feedback-title {
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem
+    }
+
+    .feedback-text {
+      font-size: 0.88rem;
+      line-height: 1.5
+    }
+
+    .next-btn {
+      display: block;
+      margin: 1rem auto 0;
+      padding: 0.8rem 2.5rem;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--sky), var(--grape));
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: var(--transition)
+    }
+
+    .next-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(74, 144, 217, 0.4)
+    }
+
+    .matching-pairs {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap
+    }
+
+    .match-col {
+      flex: 1;
+      min-width: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem
+    }
+
+    .match-item {
+      padding: 0.6rem 0.9rem;
+      border-radius: 10px;
+      background: var(--bg);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+      text-align: center
+    }
+
+    .match-item.selected {
+      border-color: var(--sky);
+      background: rgba(74, 144, 217, 0.12)
+    }
+
+    .match-item.matched-correct {
+      background: #d4edda;
+      border-color: #28a745;
+      cursor: default
+    }
+
+    .match-item.matched-wrong {
+      background: #f8d7da;
+      border-color: #dc3545
+    }
+
+    .word-order-words {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      min-height: 50px;
+      border: 2px dashed var(--muted);
+      border-radius: 12px;
+      padding: 0.8rem;
+      align-content: flex-start
+    }
+
+    .wo-word {
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      background: var(--sky);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: var(--transition)
+    }
+
+    .wo-word:hover {
+      transform: translateY(-2px) scale(1.05)
+    }
+
+    .word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem
+    }
+
+    .bank-word {
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      border: 2px solid var(--muted);
+      transition: all 0.2s
+    }
+
+    .bank-word:hover {
+      border-color: var(--sky);
+      background: rgba(74, 144, 217, 0.12)
+    }
+
+    .bank-word.used {
+      opacity: 0.3;
+      cursor: default
+    }
+
+    /* ===== RESULTS ===== */
+    .results-screen {
+      text-align: center;
+      padding: 2rem;
+      animation: fadeInUp 0.5s both
+    }
+
+    .results-score-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative
+    }
+
+    .results-percent {
+      font-size: 2.8rem;
+      font-weight: 800;
+      font-family: 'Fredoka One', cursive
+    }
+
+    .results-grade {
+      font-size: 1rem;
+      font-weight: 700
+    }
+
+    .results-message {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem
+    }
+
+    .results-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap
+    }
+
+    .stat-item {
+      text-align: center
+    }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: 'Fredoka One', cursive
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 700
+    }
+
+    .wrong-answers {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto 1.5rem
+    }
+
+    .wrong-answer-item {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      margin-bottom: 0.5rem;
+      border-left: 3px solid var(--coral);
+      font-size: 0.88rem
+    }
+
+    .results-btns {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .result-btn {
+      padding: 0.8rem 1.6rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: var(--transition)
+    }
+
+    .result-btn:hover {
+      transform: translateY(-3px)
+    }
+
+    .btn-retry {
+      background: var(--coral);
+      color: white
+    }
+
+    .btn-practice {
+      background: var(--mint);
+      color: white
+    }
+
+    .btn-home {
+      background: var(--bg);
+      color: var(--text)
+    }
+
+    /* ===== DICTATION ===== */
+    .dictation-item {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem
+    }
+
+    .dictation-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem
+    }
+
+    .dictation-type {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      background: var(--sky);
+      color: white
+    }
+
+    .listen-area {
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap
+    }
+
+    .listen-btn {
+      padding: 0.7rem 1.4rem;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--sky), var(--grape));
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition)
+    }
+
+    .listen-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(74, 144, 217, 0.3)
+    }
+
+    .listen-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed
+    }
+
+    .listen-count {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 600
+    }
+
+    .dictation-textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      border: 2px solid var(--bg);
+      background: var(--bg);
+      resize: vertical;
+      font-size: 1rem;
+      color: var(--text);
+      transition: all 0.2s
+    }
+
+    .dictation-textarea:focus {
+      outline: none;
+      border-color: var(--sky);
+      background: white
+    }
+
+    .dictation-result {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      background: var(--bg);
+      display: none
+    }
+
+    .word-result {
+      display: inline-block;
+      margin: 2px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem
+    }
+
+    .word-ok {
+      color: #28a745;
+      background: #d4edda
+    }
+
+    .word-err {
+      color: #dc3545;
+      background: #f8d7da;
+      text-decoration: line-through
+    }
+
+    .word-fix {
+      color: #155724;
+      font-size: 0.8rem;
+      display: block;
+      margin-top: 2px
+    }
+
+    .weakness-box {
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      margin-top: 0.7rem;
+      border-left: 3px solid var(--coral)
+    }
+
+    /* ===== TRANSLATION ===== */
+    .translation-item {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem
+    }
+
+    .translation-direction {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--muted)
+    }
+
+    .direction-badge {
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 800
+    }
+
+    .en-badge {
+      background: rgba(74, 144, 217, 0.15);
+      color: var(--sky)
+    }
+
+    .ar-badge {
+      background: rgba(155, 89, 182, 0.15);
+      color: var(--grape);
+      direction: rtl
+    }
+
+    .source-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.8rem 1rem;
+      background: var(--bg);
+      border-radius: 10px;
+      margin-bottom: 0.8rem
+    }
+
+    .source-text.arabic {
+      direction: rtl;
+      text-align: right;
+      font-size: 1.2rem
+    }
+
+    .hint-btn {
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.3rem 0.7rem;
+      border-radius: 10px;
+      border: 1px solid var(--muted);
+      margin-bottom: 0.7rem;
+      transition: all 0.2s
+    }
+
+    .hint-btn:hover {
+      border-color: var(--sky);
+      color: var(--sky)
+    }
+
+    /* ===== READING ===== */
+    .reading-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.2rem
+    }
+
+    .reading-text {
+      line-height: 1.9;
+      font-size: 1rem;
+      margin-bottom: 1rem
+    }
+
+    .vocab-highlight {
+      background: rgba(74, 144, 217, 0.12);
+      color: var(--sky);
+      border-radius: 4px;
+      padding: 0 3px;
+      cursor: pointer;
+      font-weight: 700;
+      border-bottom: 2px solid var(--sky);
+      transition: all 0.2s;
+      position: relative;
+      display: inline
+    }
+
+    .vocab-highlight:hover {
+      background: var(--sky);
+      color: white
+    }
+
+    .word-popup {
+      position: fixed;
+      z-index: 300;
+      background: var(--card);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      min-width: 200px;
+      pointer-events: none;
+      border: 2px solid var(--sky);
+      display: none
+    }
+
+    .reading-questions {
+      margin-top: 1.2rem
+    }
+
+    .reading-q {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 0.7rem;
+      font-weight: 700
+    }
+
+    /* ===== PROGRESS DASHBOARD ===== */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem
+    }
+
+    .dash-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      text-align: center
+    }
+
+    .dash-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      font-family: 'Fredoka One', cursive;
+      animation: countUp 0.6s both
+    }
+
+    .dash-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em
+    }
+
+    .badges-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem
+    }
+
+    .badge {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem
+    }
+
+    .badge-earned {
+      background: var(--sun);
+      color: #7a5a00
+    }
+
+    .badge-locked {
+      background: var(--bg);
+      color: var(--muted);
+      opacity: 0.6
+    }
+
+    .unit-progress-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem
+    }
+
+    .upl-item {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 1rem
+    }
+
+    .upl-name {
+      flex: 1;
+      font-weight: 600;
+      font-size: 0.9rem
+    }
+
+    .upl-bar {
+      width: 120px;
+      height: 8px;
+      background: var(--bg);
+      border-radius: 10px;
+      overflow: hidden
+    }
+
+    .upl-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--mint), var(--sky));
+      transition: width 1s ease
+    }
+
+    .upl-pct {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--sky);
+      min-width: 40px;
+      text-align: right
+    }
+
+    /* ===== MASCOT ===== */
+    .mascot {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 150;
+      cursor: pointer
+    }
+
+    .mascot-body {
+      font-size: 2.8rem;
+      animation: float 3s ease-in-out infinite;
+      transition: transform 0.2s
+    }
+
+    .mascot-body:hover {
+      transform: scale(1.15)
+    }
+
+    .mascot-msg {
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      background: var(--card);
+      border-radius: 14px;
+      padding: 0.7rem 1rem;
+      box-shadow: var(--shadow);
+      white-space: nowrap;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 2px solid var(--sky);
+      max-width: 200px;
+      white-space: normal;
+      text-align: center;
+      display: none;
+      animation: bounceIn 0.4s both
+    }
+
+    .mascot-msg::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 20px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid var(--sky)
+    }
+
+    .mascot.show-msg .mascot-msg {
+      display: block
+    }
+
+    .mascot.jumping .mascot-body {
+      animation: mascotJump 0.6s ease, float 3s ease-in-out infinite 0.6s
+    }
+
+    /* ===== CONFETTI CANVAS ===== */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 500;
+      display: none
+    }
+
+    /* ===== MOBILE SIDEBAR TOGGLE ===== */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 49
+    }
+
+    @media(max-width:767px) {
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        z-index: 50;
+        width: 280px
+      }
+
+      .sidebar.open {
+        transform: translateX(0)
+      }
+
+      .sidebar-overlay.open {
+        display: block
+      }
+
+      .hamburger {
+        display: flex
+      }
+
+      .main-content {
+        padding: 1rem
+      }
+
+      .options {
+        grid-template-columns: 1fr
+      }
+
+      .flashcard-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
+      }
+
+      .units-grid {
+        grid-template-columns: 1fr
+      }
+
+      .matching-pairs {
+        flex-direction: column
+      }
+
+      .grade-cards {
+        flex-direction: column;
+        align-items: center
+      }
+
+      .results-stats {
+        gap: 1rem
+      }
+    }
+
+    @media(min-width:768px) {
+      .hamburger {
+        display: none
+      }
+    }
+
+    /* ===== DARK MODE ===== */
+    .dark .flashcard-front {
+      background: linear-gradient(135deg, #2d4a6e, #4a2d6e)
+    }
+
+    .dark .option-btn {
+      background: var(--card)
+    }
+
+    .dark .fill-blank-input {
+      background: var(--card);
+      color: var(--text);
+      border-color: var(--card)
+    }
+
+    .dark .dictation-textarea {
+      background: var(--card);
+      color: var(--text)
+    }
+
+    /* ===== MISC ===== */
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem
+    }
+
+    .section-title .title-icon {
+      font-size: 1.8rem
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--muted)
+    }
+
+    .empty-state .empty-emoji {
+      font-size: 4rem;
+      margin-bottom: 1rem
+    }
+
+    .action-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: var(--transition)
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px)
+    }
+
+    .btn-primary {
+      background: var(--sky);
+      color: white
+    }
+
+    .btn-success {
+      background: var(--mint);
+      color: white
+    }
+
+    .btn-warning {
+      background: var(--peach);
+      color: white
+    }
+
+    .btn-danger {
+      background: var(--coral);
+      color: white
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.7rem;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap
+    }
+
+    .speed-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted)
+    }
+
+    .speed-toggle label {
+      cursor: pointer
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 400;
+      align-items: center;
+      justify-content: center
+    }
+
+    .modal.open {
+      display: flex
+    }
+
+    .modal-box {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      animation: bounceIn 0.4s both
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem
+    }
+
+    .modal-btns {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      justify-content: flex-end
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CONFETTI -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- WORD POPUP -->
+  <div class="word-popup" id="wordPopup">
+    <div style="font-size:1.3rem;font-weight:800;color:var(--sky)" id="popupWord"></div>
+    <div style="color:var(--muted);font-size:0.78rem;margin-top:2px" id="popupPhonetic"></div>
+    <div style="font-weight:700;font-size:1rem;margin-top:5px;direction:rtl" id="popupArabic"></div>
+    <div style="font-style:italic;font-size:0.82rem;color:var(--muted);margin-top:3px" id="popupExample"></div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="resetModal">
+    <div class="modal-box">
+      <div class="modal-title">⚠️ Reset Progress</div>
+      <p>This will delete all your saved words, quiz scores, and achievements. Are you sure?</p>
+      <div class="modal-btns">
+        <button class="action-btn btn-danger" onclick="confirmReset()">Yes, Reset</button>
+        <button class="action-btn" onclick="closeModal('resetModal')">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLASHCARD MODE -->
+  <div class="flashcard-mode-wrap" id="flashcardMode">
+    <div class="fm-card" id="fmCard" onclick="flipFmCard()">
+      <div class="fm-inner" id="fmInner">
+        <div class="fm-front">
+          <div class="card-emoji" id="fmEmoji">🌟</div>
+          <div class="card-word" id="fmWord">Word</div>
+          <div class="card-phonetic" id="fmPhonetic"></div>
+        </div>
+        <div class="fm-back">
+          <div class="card-arabic" id="fmArabic"></div>
+          <div class="card-example" id="fmExample"></div>
+          <button class="speak-btn" onclick="event.stopPropagation();speakText(currentFmWord)"
+            style="width:40px;height:40px;font-size:1.2rem;margin-top:0.5rem">🔊</button>
+        </div>
+      </div>
+    </div>
+    <div class="fm-nav">
+      <button class="fm-btn" onclick="prevFmCard()">◀</button>
+      <span class="fm-counter" id="fmCounter">1 / 10</span>
+      <button class="fm-btn" onclick="nextFmCard()">▶</button>
+    </div>
+    <button class="action-btn btn-danger" onclick="closeFmMode()">✕ Close</button>
+  </div>
+
+  <!-- MASCOT -->
+  <div class="mascot" id="mascot" onclick="toggleMascot()">
+    <div class="mascot-msg" id="mascotMsg">Great work! Keep learning! 🌟</div>
+    <div class="mascot-body">🦉</div>
+  </div>
+
+  <!-- SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- ====== LANDING SCREEN ====== -->
+  <div class="screen active" id="screen-landing">
+    <div id="landing">
+      <div class="landing-bg">
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+      </div>
+      <div class="landing-content">
+        <div class="landing-title">📚 Cambridge English</div>
+        <div class="landing-sub">Interactive Learning Platform</div>
+        <div style="color:rgba(255,255,255,0.8);margin-bottom:2rem;font-size:0.95rem;animation:fadeInUp 0.8s 0.5s both">
+          Choose your grade to start learning!</div>
+        <div class="grade-cards">
+          <div class="grade-card grade-3-card" onclick="selectGrade(3)">
+            <span class="emoji">🌱</span>
+            <h2>Grade 3</h2>
+            <p>Learner's Book 3</p>
+            <p style="font-size:0.75rem;color:#718096;margin-top:0.5rem">9 Units · Fiction · Poetry · Non-fiction</p>
+          </div>
+          <div class="grade-card grade-5-card" onclick="selectGrade(5)">
+            <span class="emoji">🚀</span>
+            <h2>Grade 5</h2>
+            <p>Learner's Book 5</p>
+            <p style="font-size:0.75rem;color:#718096;margin-top:0.5rem">9 Units · Fiction · Poetry · Non-fiction</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== GRADE APP SCREEN ====== -->
+  <div class="screen" id="screen-app">
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <button class="icon-btn hamburger" id="hamburgerBtn" onclick="toggleSidebar()">☰</button>
+      <div class="top-bar-logo" id="topBarLogo">📚 Cambridge</div>
+      <span class="top-bar-grade" id="topBarGrade">Grade 3</span>
+      <div class="top-bar-progress">
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="topProgressBar" style="width:0%"></div>
+        </div>
+        <span class="progress-text" id="topProgressText">0%</span>
+      </div>
+      <div class="top-bar-btns">
+        <button class="icon-btn" id="darkModeBtn" onclick="toggleDark()" title="Dark Mode">🌙</button>
+        <button class="icon-btn" onclick="goHome()" title="Home">🏠</button>
+      </div>
+    </div>
+
+    <div class="app-container">
+      <!-- SIDEBAR -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+          <h3>Navigation</h3>
+          <div class="nav-item active" id="nav-units" onclick="showView('units')">
+            <span class="nav-icon">📋</span> All Units
+          </div>
+          <div class="nav-item" id="nav-dashboard" onclick="showView('dashboard')">
+            <span class="nav-icon">📊</span> My Progress
+          </div>
+        </div>
+        <div class="sidebar-section" id="unitNavSection">
+          <h3 id="unitNavTitle">Units</h3>
+          <div id="unitNavList"></div>
+        </div>
+        <div class="sidebar-section">
+          <h3>Settings</h3>
+          <div class="nav-item" onclick="openModal('resetModal')">
+            <span class="nav-icon">🔄</span> Reset Progress
+          </div>
+          <div class="nav-item" onclick="exportProgress()">
+            <span class="nav-icon">📤</span> Export Report
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="main-content" id="mainContent">
+        <!-- VIEW: UNITS GRID -->
+        <div id="view-units">
+          <div class="section-title">
+            <span class="title-icon">📋</span>
+            <span id="unitsTitle">All Units</span>
+          </div>
+          <div class="units-grid" id="unitsGrid"></div>
+        </div>
+
+        <!-- VIEW: UNIT DETAIL -->
+        <div id="view-unit" style="display:none">
+          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;flex-wrap:wrap">
+            <button class="action-btn" onclick="showView('units')"
+              style="padding:0.5rem 1rem;background:var(--bg);color:var(--text)">← Back</button>
+            <div class="section-title" style="margin:0" id="unitDetailTitle">Unit 1</div>
+          </div>
+          <div class="section-tabs" id="sectionTabs">
+            <button class="tab-btn active" onclick="showSection('vocab')">📚 Vocabulary</button>
+            <button class="tab-btn" onclick="showSection('grammar')">📝 Grammar</button>
+            <button class="tab-btn" onclick="showSection('reading')">📖 Reading</button>
+            <button class="tab-btn" onclick="showSection('quiz')">🎯 Quiz</button>
+            <button class="tab-btn" onclick="showSection('dictation')">🎧 Dictation</button>
+            <button class="tab-btn" onclick="showSection('translation')">🔤 Translation</button>
+          </div>
+
+          <!-- VOCAB -->
+          <div id="section-vocab">
+            <div class="header-actions">
+              <button class="action-btn btn-primary" onclick="openFmMode()">⚡ Quick Study Mode</button>
+              <div class="filter-btn active" onclick="filterVocab('all',this)">All</div>
+              <div class="filter-btn" onclick="filterVocab('saved',this)">✓ Saved</div>
+              <div class="filter-btn" onclick="filterVocab('unsaved',this)">◯ Unsaved</div>
+            </div>
+            <div class="vocab-counter" id="vocabCounter">Loading...</div>
+            <div class="flashcard-grid" id="flashcardGrid"></div>
+          </div>
+
+          <!-- GRAMMAR -->
+          <div id="section-grammar" style="display:none">
+            <div id="grammarContent"></div>
+          </div>
+
+          <!-- READING -->
+          <div id="section-reading" style="display:none">
+            <div id="readingContent"></div>
+          </div>
+
+          <!-- QUIZ -->
+          <div id="section-quiz" style="display:none">
+            <div id="quizContent"></div>
+          </div>
+
+          <!-- DICTATION -->
+          <div id="section-dictation" style="display:none">
+            <div id="dictationContent"></div>
+          </div>
+
+          <!-- TRANSLATION -->
+          <div id="section-translation" style="display:none">
+            <div id="translationContent"></div>
+          </div>
+        </div>
+
+        <!-- VIEW: DASHBOARD -->
+        <div id="view-dashboard" style="display:none">
+          <div class="section-title"><span class="title-icon">📊</span> My Progress</div>
+          <div class="dashboard-grid" id="dashboardGrid"></div>
+          <h3 style="margin-bottom:0.8rem;margin-top:1rem">🏅 Achievements</h3>
+          <div class="badges-grid" id="badgesGrid"></div>
+          <h3 style="margin-bottom:0.8rem">📈 Unit Progress</h3>
+          <div class="unit-progress-list" id="unitProgressList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ============================================================
+    // CURRICULUM DATA
+    // ============================================================
+    const curriculumData = {
+      grade3: {
+        title: "Grade 3 — Learner's Book 3",
+        units: [
+          {
+            id: "g3u1", number: 1, term: 1, termColor: "term1",
+            title: "Fiction: Different Stories by the Same Author",
+            emoji: "📖", topic: "Anna Hibiscus & No.1 Car Spotter",
+            vocabulary: [
+              { word: "balconies", arabic: "شرفات", example: "The house has beautiful balconies.", phonetic: "/ˈbælkəniz/", emoji: "🏠" },
+              { word: "compound", arabic: "مجمع سكني", example: "They live in a compound in Africa.", phonetic: "/ˈkɒmpaʊnd/", emoji: "🏘️" },
+              { word: "nectar", arabic: "رحيق الزهور", example: "Bees collect nectar from flowers.", phonetic: "/ˈnektər/", emoji: "🌸" },
+              { word: "lagoons", arabic: "البحيرات الصغيرة", example: "Lagos has beautiful lagoons.", phonetic: "/ləˈɡuːnz/", emoji: "🏞️" },
+              { word: "shanty towns", arabic: "مناطق الأكواخ", example: "Many poor people live in shanty towns.", phonetic: "/ˈʃænti taʊnz/", emoji: "🏚️" },
+              { word: "especially", arabic: "بشكل خاص / خاصة", example: "She loves singing, especially to her brothers.", phonetic: "/ɪˈspeʃəli/", emoji: "⭐" },
+              { word: "hobby", arabic: "هواية", example: "Car spotting is his only hobby.", phonetic: "/ˈhɒbi/", emoji: "🎨" },
+              { word: "banned", arabic: "محظور", example: "His hobby should not be banned.", phonetic: "/bænd/", emoji: "🚫" },
+              { word: "directly", arabic: "مباشرة", example: "The road runs directly past the village.", phonetic: "/dɪˈrektli/", emoji: "➡️" },
+              { word: "synonyms", arabic: "مترادفات", example: "Amazing and fantastic are synonyms for good.", phonetic: "/ˈsɪnənɪmz/", emoji: "🔡" },
+              { word: "adjectives", arabic: "الصفات", example: "Old and white are adjectives.", phonetic: "/ˈædʒɪktɪvz/", emoji: "🎨" },
+              { word: "nouns", arabic: "الأسماء", example: "Anna and house are nouns.", phonetic: "/naʊnz/", emoji: "🏷️" },
+              { word: "verbs", arabic: "الأفعال", example: "Runs and climbs are verbs.", phonetic: "/vɜːbz/", emoji: "🏃" },
+              { word: "fantastic", arabic: "رائع / خيالي", example: "It was a fantastic adventure.", phonetic: "/fænˈtæstɪk/", emoji: "🌟" },
+              { word: "amazing", arabic: "مذهل", example: "The view was amazing!", phonetic: "/əˈmeɪzɪŋ/", emoji: "😲" }
+            ],
+            grammar: [
+              {
+                rule: "Present Tense vs Past Tense", arabicExplanation: "نستخدم زمن المضارع للأحداث الجارية والمعتادة، وزمن الماضي للأحداث التي انتهت",
+                explanation: "Present tense verbs tell us about things happening now or usually. They end in -s or have no ending. Past tense verbs tell us about things that happened in the past. They end in -ed.",
+                examples: ["Anna Hibiscus <span class='highlight'>helps</span> her mother. (present)", "Anna Hibiscus <span class='highlight'>helped</span> her mother. (past)", "The boys <span class='highlight'>climb</span> the tree. (present)", "The boys <span class='highlight'>climbed</span> the tree. (past)"],
+                table: { headers: ["Tense", "Form", "Example"], rows: [["Present simple", "verb / verb+s", "She helps, they climb"], ["Present continuous", "am/is/are + -ing", "She is helping"], ["Past simple", "verb + -ed", "She helped"], ["Past continuous", "was/were + -ing", "She was helping"]] }
+              },
+              {
+                rule: "Synonyms — Interesting Adjectives", arabicExplanation: "يمكننا استخدام كلمات مرادفة أكثر إثارة بدلاً من الكلمات العادية في الكتابة",
+                explanation: "We can use interesting synonyms in our writing. Instead of 'good', we can say 'amazing' or 'fantastic'. Words with the same or similar meaning are called synonyms.",
+                examples: ["<span class='highlight'>good</span> → amazing / fantastic / brilliant", "<span class='highlight'>big</span> → enormous / huge / gigantic", "<span class='highlight'>said</span> → bellowed / whispered / shouted", "<span class='highlight'>walked</span> → marched / crept / strolled"]
+              }
+            ],
+            readings: [
+              {
+                title: "Anna Hibiscus", text: "Anna Hibiscus lives in Africa. Amazing Africa. She lives in an old white house with balconies and secret staircases. A wonderful house in a beautiful garden inside a big compound. The trees are full of sweet ripe fruit and the flowers are full of sweet juicy nectar. Outside the compound is the city. An amazing city of lagoons and bridges.",
+                vocab_words: ["balconies", "compound", "nectar", "lagoons"],
+                questions: [
+                  { q: "Where does Anna Hibiscus live?", options: ["In Europe", "In Africa", "In Asia", "In America"], answer: 1 },
+                  { q: "What is Anna Hibiscus's house like?", options: ["Small and plain", "Old and white with balconies", "New and modern", "Dark and scary"], answer: 1 },
+                  { q: "What is outside the compound?", options: ["A forest", "A farm", "The city", "The sea"], answer: 2 },
+                  { q: "What is the city of?", options: ["Mountains", "Lagoons and bridges", "Deserts", "Forests"], answer: 1 }
+                ]
+              }
+            ],
+            songs: []
+          },
+          {
+            id: "g3u2", number: 2, term: 1, termColor: "term1",
+            title: "Non-fiction: Letters",
+            emoji: "✉️", topic: "An Invitation to Rio de Janeiro",
+            vocabulary: [
+              { word: "formal", arabic: "رسمي", example: "We use formal language for strangers.", phonetic: "/ˈfɔːml/", emoji: "👔" },
+              { word: "informal", arabic: "غير رسمي", example: "We use informal language with friends.", phonetic: "/ɪnˈfɔːml/", emoji: "😊" },
+              { word: "contractions", arabic: "الاختصارات", example: "Can't is a contraction of cannot.", phonetic: "/kənˈtrækʃənz/", emoji: "🔗" },
+              { word: "apostrophe", arabic: "علامة الحذف", example: "The apostrophe shows a letter is missed.", phonetic: "/əˈpɒstrəfi/", emoji: "✏️" },
+              { word: "recount", arabic: "إعادة سرد الأحداث", example: "A recount tells events that happened.", phonetic: "/ˈriːkaʊnt/", emoji: "📝" },
+              { word: "connectives", arabic: "أدوات الربط", example: "Use connectives like 'because' and 'if'.", phonetic: "/kəˈnektɪvz/", emoji: "🔗" },
+              { word: "postcard", arabic: "بطاقة بريدية", example: "I sent a postcard from my holiday.", phonetic: "/ˈpəʊstkɑːd/", emoji: "🏝️" },
+              { word: "recipient", arabic: "المستلم", example: "The letter's recipient was very happy.", phonetic: "/rɪˈsɪpiənt/", emoji: "📬" },
+              { word: "greeting", arabic: "التحية / تحية", example: "Dear Anna is a greeting in a letter.", phonetic: "/ˈɡriːtɪŋ/", emoji: "👋" },
+              { word: "signature", arabic: "التوقيع", example: "Sign with your name as the signature.", phonetic: "/ˈsɪɡnɪtʃər/", emoji: "🖊️" },
+              { word: "invitation", arabic: "دعوة", example: "I got an invitation to the party.", phonetic: "/ˌɪnvɪˈteɪʃn/", emoji: "💌" },
+              { word: "carnival", arabic: "كرنفال / مهرجان", example: "Rio is famous for its carnival.", phonetic: "/ˈkɑːnɪvl/", emoji: "🎭" }
+            ],
+            grammar: [
+              {
+                rule: "Contractions", arabicExplanation: "الاختصارات هي كلمتان مدمجتان معاً مع علامة حذف تحل محل الحرف المحذوف",
+                explanation: "A contraction is a short version of two words. We put an apostrophe where a letter has been missed.",
+                examples: ["cannot → <span class='highlight'>can't</span>", "do not → <span class='highlight'>don't</span>", "it is → <span class='highlight'>it's</span>", "I am → <span class='highlight'>I'm</span>", "she is → <span class='highlight'>she's</span>", "they are → <span class='highlight'>they're</span>"],
+                table: { headers: ["Full form", "Contraction"], rows: [["cannot", "can't"], ["do not", "don't"], ["is not", "isn't"], ["it is", "it's"], ["I am", "I'm"], ["she is", "she's"], ["he is", "he's"], ["they are", "they're"]] }
+              },
+              {
+                rule: "Formal vs Informal Language", arabicExplanation: "نستخدم لغة رسمية مع الغرباء ولغة غير رسمية مع الأصدقاء والعائلة",
+                explanation: "We change our writing depending on who we write to. We use formal language for strangers and informal language for friends and family.",
+                examples: ["<span class='highlight'>Formal:</span> Dear Sir / Yours faithfully", "<span class='highlight'>Informal:</span> Hi Sam / Lots of love", "<span class='highlight'>Formal:</span> I would like to request...", "<span class='highlight'>Informal:</span> Can I please have..."]
+              }
+            ],
+            readings: [
+              {
+                title: "A Letter to Rio", text: "Dear Anna Hibiscus,\n\nI am writing to invite you to visit me in Rio de Janeiro. Rio de Janeiro is in Brazil. It is a fantastic city! We have beautiful beaches where people love to play football and volleyball. We have the most amazing carnival in the world.\n\nI hope you can come and visit. Please write back soon!\n\nYours faithfully,\nSandy",
+                vocab_words: ["invitation", "formal", "carnival"],
+                questions: [
+                  { q: "Who wrote this letter?", options: ["Anna", "Sandy", "Rio", "Brazil"], answer: 1 },
+                  { q: "What kind of letter is this?", options: ["A complaint", "A thank you", "An invitation", "A news letter"], answer: 2 },
+                  { q: "Where is Rio de Janeiro?", options: ["In Africa", "In Brazil", "In Europe", "In Asia"], answer: 1 },
+                  { q: "What is Rio known for?", options: ["Mountains", "Deserts", "Carnival and beaches", "Forests"], answer: 2 }
+                ]
+              }
+            ],
+            songs: []
+          },
+          {
+            id: "g3u3", number: 3, term: 1, termColor: "term1",
+            title: "Poetry: Poems from Different Cultures",
+            emoji: "🎭", topic: "Cakes in Jamaica",
+            vocabulary: [
+              { word: "figurative language", arabic: "اللغة المجازية", example: "Poets use figurative language for effect.", phonetic: "/ˈfɪɡərətɪv ˈlæŋɡwɪdʒ/", emoji: "🎭" },
+              { word: "rhyme", arabic: "القافية", example: "Cat and hat rhyme because they sound alike.", phonetic: "/raɪm/", emoji: "🎵" },
+              { word: "rhythm", arabic: "الإيقاع", example: "Poems have a special rhythm.", phonetic: "/ˈrɪðəm/", emoji: "🥁" },
+              { word: "dialect", arabic: "اللهجة المحلية", example: "The poem uses Jamaican dialect.", phonetic: "/ˈdaɪəlekt/", emoji: "💬" },
+              { word: "stanza", arabic: "المقطع الشعري", example: "Each stanza has four lines.", phonetic: "/ˈstænzə/", emoji: "📜" },
+              { word: "repetition", arabic: "التكرار", example: "Repetition makes poems memorable.", phonetic: "/ˌrepɪˈtɪʃn/", emoji: "🔄" },
+              { word: "alliteration", arabic: "الجناس / تكرار حرف", example: "Peter Piper is alliteration.", phonetic: "/əˌlɪtəˈreɪʃn/", emoji: "🔤" },
+              { word: "pinda cake", arabic: "كعكة الفول السوداني", example: "Pinda cake is popular in Jamaica.", phonetic: "/ˈpɪndə keɪk/", emoji: "🎂" },
+              { word: "culture", arabic: "الثقافة", example: "Every country has its own culture.", phonetic: "/ˈkʌltʃər/", emoji: "🌍" },
+              { word: "tradition", arabic: "التقليد / العادة", example: "This is a Jamaican food tradition.", phonetic: "/trəˈdɪʃn/", emoji: "🏺" }
+            ],
+            grammar: [
+              {
+                rule: "Apostrophe for Contraction", arabicExplain: "نستخدم علامة الحذف لتُظهر أن حرفاً أو أكثر قد حُذف عند دمج كلمتين",
+                explanation: "We use an apostrophe to show where a letter has been missed when two words are joined. Even tricky ones like 'will not → won't' (will becomes wo!).",
+                examples: ["cannot → <span class='highlight'>can't</span> (the 'no' is removed)", "he will → <span class='highlight'>he'll</span> (the 'wi' is removed)", "will not → <span class='highlight'>won't</span> (irregular: will becomes wo)", "I would → <span class='highlight'>I'd</span>"]
+              },
+              {
+                rule: "Figurative Language in Poetry", arabicExplanation: "تستخدم الشعراء اللغة المجازية لتخلق مؤثرات مختلفة",
+                explanation: "Poets use figurative language to create different effects. Strong rhymes and rhythm can make parts of a poem sound like a song.",
+                examples: ["<span class='highlight'>Rhyme:</span> cake / make / take", "<span class='highlight'>Rhythm:</span> DUM-da-DUM-da-DUM (beat pattern)", "<span class='highlight'>Repetition:</span> Pinda cake! Pinda cake!", "<span class='highlight'>Alliteration:</span> Pretty pinda pastry"]
+              }
+            ],
+            readings: [],
+            songs: [{ title: "Cakes in Jamaica (excerpt)", lyrics: "Pinda cake! Pinda cake!\nWho will buy my pinda cake?\nSweet and sticky, fresh and hot,\nBuy my pinda cake or not!" }]
+          },
+          {
+            id: "g3u4", number: 4, term: 2, termColor: "term2",
+            title: "Fiction: Myths and Legends",
+            emoji: "⚔️", topic: "Mighty Finn McCool",
+            vocabulary: [
+              { word: "warrior", arabic: "محارب", example: "Finn McCool was a famous warrior.", phonetic: "/ˈwɒriər/", emoji: "⚔️" },
+              { word: "savage", arabic: "شرس / متوحش", example: "The giant was very savage.", phonetic: "/ˈsævɪdʒ/", emoji: "😤" },
+              { word: "insults", arabic: "الإهانات", example: "He threw insults at his enemy.", phonetic: "/ˈɪnsʌlts/", emoji: "😠" },
+              { word: "heave", arabic: "يرفع بجهد", example: "He had to heave the heavy rock.", phonetic: "/hiːv/", emoji: "💪" },
+              { word: "causeway", arabic: "جسر حجري مسطح", example: "He built a causeway across the sea.", phonetic: "/ˈkɔːzweɪ/", emoji: "🌉" },
+              { word: "colossal", arabic: "ضخم جداً", example: "The giant was colossal!", phonetic: "/kəˈlɒsl/", emoji: "🏔️" },
+              { word: "bonnet", arabic: "قبعة قماشية", example: "She wore a pretty bonnet.", phonetic: "/ˈbɒnɪt/", emoji: "👒" },
+              { word: "legend", arabic: "أسطورة", example: "Finn McCool is a famous Irish legend.", phonetic: "/ˈledʒənd/", emoji: "📜" },
+              { word: "enormous", arabic: "هائل / ضخم", example: "The giant was enormous.", phonetic: "/ɪˈnɔːməs/", emoji: "🐘" },
+              { word: "bellowed", arabic: "صاح بصوت عالٍ", example: "The giant bellowed across the sea.", phonetic: "/ˈbeləʊd/", emoji: "📢" },
+              { word: "myth", arabic: "أسطورة قديمة", example: "Greek myths tell about ancient gods.", phonetic: "/mɪθ/", emoji: "🏛️" },
+              { word: "hero", arabic: "البطل", example: "Finn McCool was the hero of the story.", phonetic: "/ˈhɪərəʊ/", emoji: "🦸" }
+            ],
+            grammar: [
+              {
+                rule: "Story Openings", arabicExplanation: "يمكننا جعل بدايات القصص مثيرة للاهتمام بطرق مختلفة",
+                explanation: "We can make our story opening interesting by starting sentences in different ways. Sentences can start with when, where, or how words.",
+                examples: ["<span class='highlight'>Once upon a time,</span> … (tells us when)", "<span class='highlight'>In the far distance,</span> … (tells us where)", "<span class='highlight'>All at once,</span> … (tells us how)", "<span class='highlight'>Deep in the mountains,</span> Finn heard a noise."]
+              },
+              {
+                rule: "Types of Sentences", arabicExplanation: "هناك أنواع مختلفة من الجمل: الإخبارية والاستفهامية والأمرية والتعجبية",
+                explanation: "There are four types of sentences. Each has a different purpose and ends with different punctuation.",
+                examples: ["<span class='highlight'>Statement:</span> I expect you're too scared. (.)", "<span class='highlight'>Question:</span> What did you say? (?)", "<span class='highlight'>Command:</span> Come here and say that! (!)", "<span class='highlight'>Exclamation:</span> What nonsense! (!)"],
+                table: { headers: ["Type", "Purpose", "Punctuation"], rows: [["Statement", "to tell / inform", ". (full stop)"], ["Question", "to ask", "? (question mark)"], ["Command", "to order / instruct", "! or ."], ["Exclamation", "to exclaim with feeling", "!"]] }
+              }
+            ],
+            readings: [
+              {
+                title: "Mighty Finn McCool", text: "In a land long ago, there lived the mightiest warrior in all of Ireland. His name was Finn McCool. In the far distance, across the grey sea, lived a colossal Scottish giant called Angus McTavish. Angus McTavish bellowed insults across the sea at Finn McCool every morning. 'I am bigger and stronger than you!' he would shout. One day, Finn decided he had had enough. He heaved enormous rocks into the sea to build a causeway.",
+                vocab_words: ["warrior", "colossal", "bellowed", "insults", "causeway", "heave"],
+                questions: [
+                  { q: "Where did Finn McCool live?", options: ["Scotland", "England", "Ireland", "Wales"], answer: 2 },
+                  { q: "What did Angus McTavish do every morning?", options: ["Sang songs", "Threw rocks", "Bellowed insults", "Went fishing"], answer: 2 },
+                  { q: "What did Finn build?", options: ["A castle", "A bridge", "A causeway", "A wall"], answer: 2 },
+                  { q: "What kind of text is this?", options: ["Biography", "Poem", "Letter", "Legend"], answer: 3 }
+                ]
+              }
+            ],
+            songs: []
+          },
+          {
+            id: "g3u5", number: 5, term: 2, termColor: "term2",
+            title: "Non-fiction: Information Texts",
+            emoji: "📰", topic: "Information about Volcanoes",
+            vocabulary: [
+              { word: "information text", arabic: "نص معلوماتي", example: "An encyclopedia is an information text.", phonetic: "/ˌɪnfəˈmeɪʃn tekst/", emoji: "📚" },
+              { word: "heading", arabic: "العنوان / العنوان الفرعي", example: "The heading tells you what a section is about.", phonetic: "/ˈhedɪŋ/", emoji: "📑" },
+              { word: "subheading", arabic: "العنوان الفرعي", example: "Subheadings organise information.", phonetic: "/ˈsʌbhedɪŋ/", emoji: "📌" },
+              { word: "glossary", arabic: "المعجم / قاموس المصطلحات", example: "Check the glossary for word meanings.", phonetic: "/ˈɡlɒsəri/", emoji: "📖" },
+              { word: "diagram", arabic: "مخطط / رسم توضيحي", example: "The diagram shows how volcanoes work.", phonetic: "/ˈdaɪəɡræm/", emoji: "🗺️" },
+              { word: "caption", arabic: "تعليق الصورة", example: "Read the caption under the photo.", phonetic: "/ˈkæpʃn/", emoji: "🖼️" },
+              { word: "contents page", arabic: "صفحة المحتويات", example: "Use the contents page to find chapters.", phonetic: "/ˈkɒntents peɪdʒ/", emoji: "📋" },
+              { word: "fact", arabic: "حقيقة / معلومة", example: "It is a fact that volcanoes erupt.", phonetic: "/fækt/", emoji: "✅" },
+              { word: "eruption", arabic: "انفجار بركاني", example: "The volcano eruption was dangerous.", phonetic: "/ɪˈrʌpʃn/", emoji: "🌋" },
+              { word: "lava", arabic: "الحمم البركانية", example: "Hot lava flowed down the mountain.", phonetic: "/ˈlɑːvə/", emoji: "🔥" }
+            ],
+            grammar: [
+              {
+                rule: "Non-fiction Text Features", arabicExplanation: "النصوص المعلوماتية تستخدم ميزات خاصة لتنظيم المعلومات",
+                explanation: "Information texts use special features to organise the facts. These make it easier for the reader to find and understand information.",
+                examples: ["<span class='highlight'>Headings</span> tell you what each section is about", "<span class='highlight'>Subheadings</span> break up long sections", "<span class='highlight'>Glossary</span> explains difficult words", "<span class='highlight'>Diagrams and captions</span> show information visually", "<span class='highlight'>Contents page</span> lists all the sections"]
+              },
+              {
+                rule: "Present Tense in Non-fiction", arabicExplanation: "تستخدم النصوص المعلوماتية عادةً زمن المضارع لأنها تصف حقائق",
+                explanation: "Information texts usually use present tense because they describe facts that are always true.",
+                examples: ["Volcanoes <span class='highlight'>erupt</span> when pressure builds up.", "Lava <span class='highlight'>is</span> very hot.", "Scientists <span class='highlight'>study</span> volcanoes carefully.", "The Earth <span class='highlight'>has</span> many active volcanoes."]
+              }
+            ],
+            readings: [
+              {
+                title: "What is a Volcano?", text: "A volcano is an opening in the Earth's surface. When a volcano erupts, hot liquid rock called lava comes out. The lava flows down the sides of the volcano. Volcanoes can be found all over the world. Some volcanoes are found underwater at the bottom of the ocean.",
+                vocab_words: ["eruption", "lava"],
+                questions: [
+                  { q: "What is a volcano?", options: ["A mountain", "An opening in Earth's surface", "A type of rock", "A deep sea"], answer: 1 },
+                  { q: "What is lava?", options: ["Cold water", "Hot liquid rock", "Ice", "Sand"], answer: 1 },
+                  { q: "Where are volcanoes found?", options: ["Only on land", "Only in the sea", "All over the world", "Only in cold places"], answer: 2 },
+                  { q: "What comes out when a volcano erupts?", options: ["Water", "Air", "Lava", "Snow"], answer: 2 }
+                ]
+              }
+            ],
+            songs: []
+          },
+          {
+            id: "g3u6", number: 6, term: 2, termColor: "term2",
+            title: "Playscripts: Traditional Tales",
+            emoji: "🎭", topic: "Playscripts of Traditional Tales",
+            vocabulary: [
+              { word: "playscript", arabic: "نص مسرحي", example: "A playscript is a written play.", phonetic: "/ˈpleɪskrɪpt/", emoji: "🎬" },
+              { word: "stage directions", arabic: "إرشادات المسرح", example: "Stage directions tell actors what to do.", phonetic: "/steɪdʒ dɪˈrekʃənz/", emoji: "🎭" },
+              { word: "narrator", arabic: "الراوي", example: "The narrator tells the audience what happens.", phonetic: "/nəˈreɪtər/", emoji: "📣" },
+              { word: "dialogue", arabic: "الحوار", example: "The dialogue is what characters say.", phonetic: "/ˈdaɪəlɒɡ/", emoji: "💬" },
+              { word: "character", arabic: "الشخصية", example: "Cinderella is the main character.", phonetic: "/ˈkærəktər/", emoji: "🦸" },
+              { word: "setting", arabic: "الموقع / البيئة", example: "The story setting is a dark forest.", phonetic: "/ˈsetɪŋ/", emoji: "🌲" },
+              { word: "prop", arabic: "الدعامة / الإكسسوار المسرحي", example: "The pumpkin is a prop in the play.", phonetic: "/prɒp/", emoji: "🎪" },
+              { word: "scene", arabic: "المشهد", example: "Scene 1 takes place at home.", phonetic: "/siːn/", emoji: "🎬" },
+              { word: "traditional tale", arabic: "حكاية تقليدية", example: "Cinderella is a traditional tale.", phonetic: "/trəˈdɪʃənl teɪl/", emoji: "📜" },
+              { word: "moral", arabic: "العبرة / الدرس المستفاد", example: "The moral of the story is to be kind.", phonetic: "/ˈmɒrəl/", emoji: "💡" }
+            ],
+            grammar: [
+              {
+                rule: "Features of a Playscript", arabicExplanation: "نصوص المسرحية لها ميزات خاصة تميزها عن القصص العادية",
+                explanation: "Playscripts are written in a special way. They have character names before speech, stage directions in brackets, and no speech marks.",
+                examples: ["<span class='highlight'>NARRATOR:</span> Once upon a time…", "<span class='highlight'>CINDERELLA:</span> I wish I could go to the ball.", "<span class='highlight'>[Cinderella begins to cry]</span> (stage direction)", "<span class='highlight'>Scene 1:</span> A small cottage in the woods"]
+              },
+              {
+                rule: "Speech and Stage Directions", arabicExplanation: "في النصوص المسرحية، نكتب إرشادات المسرح بين أقواس بدون علامات اقتباس",
+                explanation: "In a playscript: speech has no speech marks, stage directions are in brackets and italics, and character names are in capitals before their lines.",
+                examples: ["FAIRY: <span class='highlight'>[waves wand]</span> Your wish is granted!", "PRINCE: <span class='highlight'>[looking sad]</span> Will I find her?", "<span class='highlight'>[Sound of horse hooves]</span>", "STEPMOTHER: <span class='highlight'>[angry]</span> Cinderella, come here!"]
+              }
+            ],
+            readings: [],
+            songs: []
+          },
+          {
+            id: "g3u7", number: 7, term: 3, termColor: "term3",
+            title: "Fiction: Adventure Stories",
+            emoji: "🚀", topic: "Cakes in Space — A Difficult Problem",
+            vocabulary: [
+              { word: "adventure", arabic: "مغامرة", example: "They went on a great adventure.", phonetic: "/ədˈventʃər/", emoji: "🗺️" },
+              { word: "dangerous", arabic: "خطير", example: "The planet was very dangerous.", phonetic: "/ˈdeɪndʒərəs/", emoji: "⚠️" },
+              { word: "screamed", arabic: "صرخ", example: "She screamed when she saw the monster.", phonetic: "/skriːmd/", emoji: "😱" },
+              { word: "escaped", arabic: "هرب / نجا", example: "They escaped from the cave.", phonetic: "/ɪˈskeɪpt/", emoji: "🏃" },
+              { word: "onomatopoeia", arabic: "المحاكاة الصوتية", example: "BOOM and CRASH are onomatopoeia.", phonetic: "/ˌɒnəˌmætəˈpiːə/", emoji: "💥" },
+              { word: "planet", arabic: "كوكب", example: "They are travelling to a new planet.", phonetic: "/ˈplænɪt/", emoji: "🪐" },
+              { word: "spaceship", arabic: "سفينة فضاء", example: "The spaceship flew through space.", phonetic: "/ˈspeɪsʃɪp/", emoji: "🚀" },
+              { word: "darkness", arabic: "الظلام", example: "There was complete darkness in the cave.", phonetic: "/ˈdɑːknəs/", emoji: "🌑" },
+              { word: "jungle", arabic: "الغابة الاستوائية", example: "A jaguar lives in the jungle.", phonetic: "/ˈdʒʌŋɡl/", emoji: "🌿" },
+              { word: "suddenly", arabic: "فجأة", example: "Suddenly, the lights went out.", phonetic: "/ˈsʌdənli/", emoji: "⚡" },
+              { word: "crashing", arabic: "يصطدم / ينهار بصخب", example: "The waves were crashing on the rocks.", phonetic: "/ˈkræʃɪŋ/", emoji: "💥" },
+              { word: "looming", arabic: "يظهر بشكل مخيف", example: "Dark looming cliffs surrounded them.", phonetic: "/ˈluːmɪŋ/", emoji: "🌫️" }
+            ],
+            grammar: [
+              {
+                rule: "Dramatic Adventure Vocabulary", arabicExplanation: "قصص المغامرات تستخدم كلمات درامية ومثيرة لجعل القصة أكثر إثارة",
+                explanation: "Adventure stories use dramatic vocabulary to create tension and excitement.",
+                examples: ["<span class='highlight'>Action verbs:</span> ran, escaped, hid, screamed, climbed", "<span class='highlight'>Adjectives:</span> dangerous, scary, crashing, huge", "<span class='highlight'>Nouns:</span> mountain, jungle, darkness, ship, island", "<span class='highlight'>Sentence starters:</span> Suddenly… At once… Creeping up behind them…", "<span class='highlight'>Onomatopoeia:</span> BAM! WHOOSH! BOOM! CRASH!"]
+              },
+              {
+                rule: "Creating Tension with Language", arabicExplanation: "يمكننا خلق توتر في القصة باستخدام عبارات بداية جمل مميزة وأوصاف درامية",
+                explanation: "Writers create tension by using powerful language choices including dramatic sentence starters, noun phrases, and onomatopoeia.",
+                examples: ["<span class='highlight'>Noun phrase:</span> the dark, looming cliffs", "<span class='highlight'>Noun phrase:</span> misty mountains in the distance", "<span class='highlight'>Starter:</span> Creeping up behind them was...", "<span class='highlight'>Starter:</span> Without warning, the floor..."]
+              }
+            ],
+            readings: [
+              {
+                title: "A Difficult Problem", text: "Astra woke up. Something was wrong. The spaceship was making a strange sound. WHOOSH! BOOM! She crept out of her sleeping pod. It was dark. Very dark. Suddenly, a green light flashed. Then another. And another. Astra screamed. Standing in the corridor was an enormous green monster!",
+                vocab_words: ["spaceship", "suddenly", "darkness", "screamed"],
+                questions: [
+                  { q: "What woke Astra up?", options: ["The light", "A strange sound", "A monster", "Her friend"], answer: 1 },
+                  { q: "What did Astra see in the corridor?", options: ["Her friend", "A robot", "A green monster", "The captain"], answer: 2 },
+                  { q: "What onomatopoeia words are used?", options: ["Boom and Crash", "Whoosh and Boom", "Bang and Crash", "Zoom and Flash"], answer: 1 },
+                  { q: "What kind of story is this?", options: ["A legend", "A poem", "An adventure story", "A letter"], answer: 2 }
+                ]
+              }
+            ],
+            songs: []
+          },
+          {
+            id: "g3u8", number: 8, term: 3, termColor: "term3",
+            title: "Poetry: Poems with Different Structures",
+            emoji: "🎵", topic: "Poems with Different Structures",
+            vocabulary: [
+              { word: "structure", arabic: "البنية / الهيكل", example: "Poems can have different structures.", phonetic: "/ˈstrʌktʃər/", emoji: "🏗️" },
+              { word: "haiku", arabic: "هايكو (شعر ياباني)", example: "A haiku has 3 lines with 5-7-5 syllables.", phonetic: "/ˈhaɪkuː/", emoji: "🌸" },
+              { word: "syllable", arabic: "مقطع صوتي", example: "'Apple' has two syllables: ap-ple.", phonetic: "/ˈsɪləbl/", emoji: "🔤" },
+              { word: "free verse", arabic: "الشعر الحر", example: "Free verse does not need to rhyme.", phonetic: "/friː vɜːs/", emoji: "📝" },
+              { word: "line break", arabic: "كسر السطر", example: "A line break is where a line ends in a poem.", phonetic: "/laɪn breɪk/", emoji: "↵" },
+              { word: "verse", arabic: "مقطع الشعر", example: "Each verse has four lines.", phonetic: "/vɜːs/", emoji: "📜" },
+              { word: "imagery", arabic: "التصوير / الصور الشعرية", example: "The poem uses beautiful imagery.", phonetic: "/ˈɪmɪdʒri/", emoji: "🎨" },
+              { word: "pattern", arabic: "النمط / الشكل", example: "This poem has a repeating pattern.", phonetic: "/ˈpætən/", emoji: "🔁" },
+              { word: "simile", arabic: "التشبيه", example: "She is as brave as a lion — that's a simile.", phonetic: "/ˈsɪməli/", emoji: "🦁" },
+              { word: "metaphor", arabic: "الاستعارة", example: "Life is a journey — that's a metaphor.", phonetic: "/ˈmetəfər/", emoji: "🛤️" }
+            ],
+            grammar: [
+              {
+                rule: "Haiku Structure", arabicExplanation: "الهايكو نوع من الشعر الياباني يتكون من ثلاثة أسطر: 5 مقاطع + 7 مقاطع + 5 مقاطع",
+                explanation: "A haiku is a traditional Japanese poem. It has exactly three lines with a syllable pattern of 5-7-5. Haikus often describe nature.",
+                examples: ["<span class='highlight'>Line 1 (5 syllables):</span> An old silent pond", "<span class='highlight'>Line 2 (7 syllables):</span> A frog jumps into the pond", "<span class='highlight'>Line 3 (5 syllables):</span> Splash! Silence again", "<span class='highlight'>Count:</span> an-old-si-lent-pond = 5 ✓"]
+              },
+              {
+                rule: "Simile and Metaphor", arabicExplanation: "التشبيه يقارن بين شيئين باستخدام 'مثل' أو 'كـ'، أما الاستعارة فتقول أن شيئاً ما هو في الواقع شيء آخر",
+                explanation: "Similes and metaphors compare things. Similes use 'like' or 'as'. Metaphors say something IS something else.",
+                examples: ["<span class='highlight'>Simile:</span> The stars are like tiny diamonds", "<span class='highlight'>Simile:</span> She ran as fast as the wind", "<span class='highlight'>Metaphor:</span> The moon is a silver coin", "<span class='highlight'>Metaphor:</span> The classroom is a zoo!"]
+              }
+            ],
+            readings: [],
+            songs: []
+          },
+          {
+            id: "g3u9", number: 9, term: 3, termColor: "term3",
+            title: "Non-fiction: Instructions",
+            emoji: "📋", topic: "How to Write Instructions",
+            vocabulary: [
+              { word: "instructions", arabic: "التعليمات", example: "Follow the instructions carefully.", phonetic: "/ɪnˈstrʌkʃənz/", emoji: "📋" },
+              { word: "imperative", arabic: "فعل الأمر", example: "'Mix' and 'add' are imperative verbs.", phonetic: "/ɪmˈperətɪv/", emoji: "👉" },
+              { word: "sequence", arabic: "التسلسل / الترتيب", example: "Follow the steps in sequence.", phonetic: "/ˈsiːkwəns/", emoji: "🔢" },
+              { word: "ingredients", arabic: "المكونات", example: "List all ingredients for the recipe.", phonetic: "/ɪnˈɡriːdiənts/", emoji: "🥣" },
+              { word: "equipment", arabic: "الأدوات / المعدات", example: "You need the right equipment.", phonetic: "/ɪˈkwɪpmənt/", emoji: "🔧" },
+              { word: "method", arabic: "الطريقة / الأسلوب", example: "Follow the method step by step.", phonetic: "/ˈmeθəd/", emoji: "📝" },
+              { word: "firstly", arabic: "أولاً", example: "Firstly, gather all your ingredients.", phonetic: "/ˈfɜːstli/", emoji: "1️⃣" },
+              { word: "then", arabic: "ثم", example: "Then, mix everything together.", phonetic: "/ðen/", emoji: "➡️" },
+              { word: "finally", arabic: "أخيراً / في النهاية", example: "Finally, bake for 30 minutes.", phonetic: "/ˈfaɪnəli/", emoji: "🏁" },
+              { word: "temperature", arabic: "درجة الحرارة", example: "Set the temperature to 180 degrees.", phonetic: "/ˈtemprɪtʃər/", emoji: "🌡️" }
+            ],
+            grammar: [
+              {
+                rule: "Imperative Verbs in Instructions", arabicExplanation: "تستخدم التعليمات أفعال الأمر — وهي الأفعال التي تخبر شخصاً ما بفعل شيء ما",
+                explanation: "Instructions use imperative verbs — verbs that tell someone to do something. They come at the start of each step and have no subject (no 'you').",
+                examples: ["<span class='highlight'>Mix</span> the ingredients together.", "<span class='highlight'>Add</span> two cups of flour.", "<span class='highlight'>Place</span> in a preheated oven.", "<span class='highlight'>Wait</span> for 10 minutes.", "<span class='highlight'>Do not</span> open the oven door!"]
+              },
+              {
+                rule: "Time Connectives in Instructions", arabicExplanation: "نستخدم أدوات الترتيب الزمني لربط خطوات التعليمات بالترتيب الصحيح",
+                explanation: "We use time connectives to put instructions in order and connect the steps clearly.",
+                examples: ["<span class='highlight'>First,</span> preheat the oven to 180°C.", "<span class='highlight'>Next,</span> mix the butter and sugar.", "<span class='highlight'>Then,</span> add the eggs one at a time.", "<span class='highlight'>After that,</span> fold in the flour.", "<span class='highlight'>Finally,</span> bake for 25 minutes."]
+              }
+            ],
+            readings: [
+              {
+                title: "How to Make a Fruit Salad", text: "You will need:\n- 2 apples\n- 2 bananas\n- a bunch of grapes\n- 1 orange\n- a bowl\n\nMethod:\n1. First, wash all the fruit carefully.\n2. Next, peel the bananas and oranges.\n3. Then, chop all the fruit into small pieces.\n4. After that, mix everything together in the bowl.\n5. Finally, serve and enjoy!",
+                vocab_words: ["firstly", "then", "finally", "ingredients", "method"],
+                questions: [
+                  { q: "What type of text is this?", options: ["A poem", "A letter", "A set of instructions", "A story"], answer: 2 },
+                  { q: "What do you do first?", options: ["Chop the fruit", "Peel the bananas", "Wash all the fruit", "Mix everything"], answer: 2 },
+                  { q: "What verb starts instruction number 3?", options: ["Wash", "Peel", "Chop", "Mix"], answer: 2 },
+                  { q: "What kind of verbs are used in instructions?", options: ["Past tense", "Imperative", "Questions", "Adjectives"], answer: 1 }
+                ]
+              }
+            ],
+            songs: []
+          }
+        ]
+      },
+      grade5: {
+        title: "Grade 5 — Learner's Book 5",
+        units: [
+          {
+            id: "g5u1", number: 1, term: 1, termColor: "term1",
+            title: "Fiction: Stories from Different Cultures",
+            emoji: "🌍", topic: "Why Cockerels Crow — A Fable from Malawi",
+            vocabulary: [
+              { word: "admired", arabic: "أُعجب به / كان موضع تقدير", example: "Everyone admired Cockerel's red comb.", phonetic: "/ədˈmaɪəd/", emoji: "😍" },
+              { word: "comb", arabic: "عرف الديك / مشط", example: "Cockerel had a bright red spiky comb.", phonetic: "/kəʊm/", emoji: "🐓" },
+              { word: "respectful", arabic: "محترم / ذو احترام", example: "Hyena was always respectful to others.", phonetic: "/rɪˈspektfl/", emoji: "🤝" },
+              { word: "chores", arabic: "الأعمال المنزلية", example: "Hyena did all the chores for Cockerel.", phonetic: "/tʃɔːrz/", emoji: "🧹" },
+              { word: "parched", arabic: "جاف جداً / عطشان جداً", example: "'I'm parched! I could drink a bucket!'", phonetic: "/pɑːtʃt/", emoji: "🥤" },
+              { word: "famished", arabic: "جائع جداً", example: "'I'm famished! I could eat a horse!'", phonetic: "/ˈfæmɪʃt/", emoji: "🍽️" },
+              { word: "implicit meaning", arabic: "المعنى الضمني", example: "Writers use implicit meaning to show character.", phonetic: "/ɪmˈplɪsɪt ˈmiːnɪŋ/", emoji: "🔍" },
+              { word: "fable", arabic: "الخرافة / الحكاية الخيالية", example: "A fable is a story with a moral lesson.", phonetic: "/ˈfeɪbl/", emoji: "🦁" },
+              { word: "moral", arabic: "العبرة / الدرس المستفاد", example: "The moral of the fable is to be fair.", phonetic: "/ˈmɒrəl/", emoji: "💡" },
+              { word: "selfish", arabic: "أناني", example: "Cockerel was selfish and lazy.", phonetic: "/ˈselfɪʃ/", emoji: "😒" },
+              { word: "generous", arabic: "كريم / سخي", example: "Hyena was very generous.", phonetic: "/ˈdʒenərəs/", emoji: "😊" },
+              { word: "arrogant", arabic: "متغطرس / متكبر", example: "The king was arrogant and proud.", phonetic: "/ˈærəɡənt/", emoji: "😤" },
+              { word: "demanding", arabic: "مطالب / صعب الإرضاء", example: "Cockerel was very demanding.", phonetic: "/dɪˈmɑːndɪŋ/", emoji: "👆" },
+              { word: "exhausted", arabic: "منهك / مرهق تماماً", example: "Hyena came back exhausted.", phonetic: "/ɪɡˈzɔːstɪd/", emoji: "😴" },
+              { word: "honour", arabic: "شرف", example: "It is a great honour to help him.", phonetic: "/ˈɒnər/", emoji: "🏅" }
+            ],
+            grammar: [
+              {
+                rule: "Implicit Meaning in Fiction", arabicExplanation: "الكتّاب لا يخبروننا دائماً مباشرةً بصفات الشخصيات، بل يُظهرون ذلك من خلال أفعالهم وكلماتهم",
+                explanation: "Writers often don't 'tell' readers what to think about a character. Instead they 'show' us through what characters do, say, and how others react. This is called implicit meaning.",
+                examples: ["<span class='highlight'>Explicit:</span> Cockerel was lazy and selfish.", "<span class='highlight'>Implicit:</span> Cockerel sat in the shade and watched, without a care in the world.", "Readers infer: He is selfish and lazy.", "<span class='highlight'>Implicit:</span> Jo winked at Charlie as she placed the chewing gum on the teacher's chair.", "Readers infer: Jo is naughty or mischievous."]
+              },
+              {
+                rule: "Adjectives for Character Description", arabicExplanation: "نستخدم الصفات لوصف شخصية الشخصيات في القصص",
+                explanation: "Adjectives help describe characters. We can group them into positive and negative characteristics.",
+                examples: ["<span class='highlight'>Positive:</span> helpful, kind, generous, thoughtful, hard-working", "<span class='highlight'>Negative:</span> selfish, greedy, arrogant, lazy, demanding", "<span class='highlight'>In sentences:</span> Hyena was <span class='highlight'>generous and helpful</span>.", "Cockerel was <span class='highlight'>arrogant and demanding</span>."],
+                table: { headers: ["Positive", "Negative"], rows: [["generous", "selfish"], ["helpful", "greedy"], ["kind", "arrogant"], ["thoughtful", "demanding"], ["hard-working", "lazy"]] }
+              }
+            ],
+            readings: [
+              {
+                title: "Why Cockerels Crow", text: "This is a very old story about Hyena and Cockerel, who were good friends in Malawi. Everyone admired Cockerel because he had a bright red spiky comb on top of his head. Cockerel loved everyone helping him. The first time, Hyena ploughed his field for him for free! Cockerel sat in the shade and watched, without a care in the world. 'I'm parched! I could drink a bucket!' said Cockerel. 'No problem!' said Hyena. 'Let me get you some good water from the lake.'",
+                vocab_words: ["admired", "comb", "respectful", "chores", "parched", "famished"],
+                questions: [
+                  { q: "Why did everyone admire Cockerel?", options: ["He was very kind", "He had a bright red comb", "He was very strong", "He could crow loudly"], answer: 1 },
+                  { q: "What did Hyena do for Cockerel?", options: ["Built his house", "Ploughed his field", "Cooked his food", "Cleaned his house"], answer: 1 },
+                  { q: "What does 'parched' mean?", options: ["Very hungry", "Very tired", "Very thirsty", "Very happy"], answer: 2 },
+                  { q: "What kind of story is this?", options: ["A biography", "A poem", "A fable", "A letter"], answer: 2 },
+                  { q: "What implicit meaning can we infer about Cockerel?", options: ["He is hard-working", "He is selfish and lazy", "He is generous", "He is helpful"], answer: 1 }
+                ]
+              }
+            ],
+            songs: []
+          },
+          {
+            id: "g5u2", number: 2, term: 1, termColor: "term1",
+            title: "Non-fiction: Biography",
+            emoji: "👤", topic: "Poorna Malavath — Biography",
+            vocabulary: [
+              { word: "biography", arabic: "السيرة الذاتية", example: "A biography tells the story of someone's life.", phonetic: "/baɪˈɒɡrəfi/", emoji: "📚" },
+              { word: "chronological", arabic: "بترتيب زمني", example: "Biographies are written in chronological order.", phonetic: "/ˌkrɒnəˈlɒdʒɪkl/", emoji: "📅" },
+              { word: "summit", arabic: "القمة", example: "She reached the summit of Everest.", phonetic: "/ˈsʌmɪt/", emoji: "⛰️" },
+              { word: "determination", arabic: "التصميم / العزيمة", example: "Her determination helped her succeed.", phonetic: "/dɪˌtɜːmɪˈneɪʃn/", emoji: "💪" },
+              { word: "achievement", arabic: "الإنجاز", example: "Climbing Everest was a great achievement.", phonetic: "/əˈtʃiːvmənt/", emoji: "🏆" },
+              { word: "expedition", arabic: "الرحلة الاستكشافية", example: "She went on an expedition to Everest.", phonetic: "/ˌekspɪˈdɪʃn/", emoji: "🧭" },
+              { word: "residential school", arabic: "المدرسة الداخلية", example: "She studied at a residential school.", phonetic: "/ˌrezɪˈdenʃl skuːl/", emoji: "🏫" },
+              { word: "inspire", arabic: "يُلهم", example: "Poorna wants to inspire other girls.", phonetic: "/ɪnˈspaɪər/", emoji: "✨" },
+              { word: "third person", arabic: "الغائب / ضمير الشخص الثالث", example: "Biographies use third person: she, he, they.", phonetic: "/θɜːd ˈpɜːsn/", emoji: "👤" },
+              { word: "direct speech", arabic: "الكلام المباشر", example: "Direct speech quotes exactly what was said.", phonetic: "/dɪˈrekt spiːtʃ/", emoji: "💬" },
+              { word: "timeline", arabic: "الخط الزمني", example: "A timeline shows events in order.", phonetic: "/ˈtaɪmlaɪn/", emoji: "📅" },
+              { word: "continent", arabic: "قارة", example: "There are seven continents on Earth.", phonetic: "/ˈkɒntɪnənt/", emoji: "🗺️" }
+            ],
+            grammar: [
+              {
+                rule: "Features of a Biography", arabicExplanation: "السير الذاتية لها ميزات خاصة تميزها عن أنواع النصوص الأخرى",
+                explanation: "Biographies are written about a real person's life. They have key features that make them different from other text types.",
+                examples: ["<span class='highlight'>Third person:</span> She climbed the mountain. He was born in India.", "<span class='highlight'>Past tense:</span> Poorna trained hard. She reached the summit.", "<span class='highlight'>Chronological order:</span> first she… then she… finally she…", "<span class='highlight'>Paragraph headings:</span> Early Life / Career / Achievements", "<span class='highlight'>Direct speech:</span> Poorna said, 'I want to prove girls can do anything.'"],
+                table: { headers: ["Feature", "Example"], rows: [["Third person", "She was born in 2000"], ["Past tense", "She climbed / she trained"], ["Chronological order", "First… Then… Later… Finally…"], ["Direct speech", "She said, 'I will succeed.'"], ["Headings", "Early Life, Career, Legacy"]] }
+              },
+              {
+                rule: "Direct Speech Punctuation", arabicExplanation: "الكلام المباشر يُسجّل ما قاله الشخص بالضبط ويوضع بين علامات التنصيص",
+                explanation: "Direct speech records exactly what a person said. Their words are placed between two sets of speech marks.",
+                examples: ["Poorna said, <span class='highlight'>'I will climb every continent.'</span>", "<span class='highlight'>'Yes, I made good friends,'</span> said Poorna.", "Note: <span class='highlight'>comma</span> before opening speech marks.", "Note: <span class='highlight'>full stop inside</span> closing speech marks."]
+              }
+            ],
+            readings: [
+              {
+                title: "Poorna Malavath", text: "Poorna Malavath is the youngest girl to climb Mount Everest. She was born in 2000 in the Telangana region of India. She came from a poor family. With great determination, she trained at a residential school. On 25 May 2014, at the age of 13, she reached the summit of Mount Everest. She said, 'I want to prove that girls can do anything, everything.'",
+                vocab_words: ["biography", "summit", "determination", "expedition", "inspire"],
+                questions: [
+                  { q: "Why is Poorna Malavath famous?", options: ["She is a film star", "She climbed Everest as the youngest girl", "She won an Olympic medal", "She became a scientist"], answer: 1 },
+                  { q: "What does 'determination' mean?", options: ["Fear of trying", "A strong will to succeed", "Being lucky", "Having money"], answer: 1 },
+                  { q: "What tense is used in biographies?", options: ["Present tense", "Future tense", "Past tense", "No tense"], answer: 2 },
+                  { q: "What person is used in biographies?", options: ["First person (I)", "Second person (you)", "Third person (she/he)", "No person"], answer: 2 }
+                ]
+              }
+            ],
+            songs: []
+          },
+          {
+            id: "g5u3", number: 3, term: 1, termColor: "term1",
+            title: "Poetry: Narrative Poems",
+            emoji: "🎶", topic: "School Trip Narrative Poem",
+            vocabulary: [
+              { word: "narrative poem", arabic: "القصيدة السردية", example: "A narrative poem tells a story.", phonetic: "/ˈnærətɪv pəʊm/", emoji: "📜" },
+              { word: "narrator", arabic: "الراوي", example: "The narrator is the voice telling the story.", phonetic: "/nəˈreɪtər/", emoji: "📣" },
+              { word: "stanza", arabic: "المقطع الشعري", example: "The poem has three stanzas.", phonetic: "/ˈstænzə/", emoji: "📝" },
+              { word: "rhyme scheme", arabic: "نمط القافية", example: "The rhyme scheme is ABAB.", phonetic: "/raɪm skiːm/", emoji: "🔤" },
+              { word: "dialect", arabic: "اللهجة", example: "Neil uses local dialect in his poem.", phonetic: "/ˈdaɪəlekt/", emoji: "💬" },
+              { word: "local", arabic: "محلي", example: "This is a local tradition in Scotland.", phonetic: "/ˈləʊkl/", emoji: "📍" },
+              { word: "verse", arabic: "بيت الشعر / مقطع", example: "Each verse has four lines.", phonetic: "/vɜːs/", emoji: "📜" },
+              { word: "rhythm", arabic: "الإيقاع", example: "Count the syllables to check the rhythm.", phonetic: "/ˈrɪðəm/", emoji: "🥁" },
+              { word: "frisbee", arabic: "الفريسبي", example: "I packed a frisbee for the beach.", phonetic: "/ˈfrɪzbi/", emoji: "🥏" },
+              { word: "spade", arabic: "المجرفة / البستنة", example: "A spade is useful at the beach.", phonetic: "/speɪd/", emoji: "⛏️" },
+              { word: "gestures", arabic: "الإيماءات / الحركات", example: "Use gestures when you read the poem aloud.", phonetic: "/ˈdʒestʃərz/", emoji: "🙌" },
+              { word: "confidently", arabic: "بثقة", example: "She read the poem confidently.", phonetic: "/ˈkɒnfɪdəntli/", emoji: "😊" }
+            ],
+            grammar: [
+              {
+                rule: "Features of Narrative Poetry", arabicExplanation: "القصائد السردية تحكي قصة لها شخصيات وأحداث، وغالباً ما تستخدم القافية والإيقاع",
+                explanation: "Narrative poems tell a story. They have a narrator, characters, and a sequence of events. They often use rhyme and rhythm.",
+                examples: ["<span class='highlight'>Story elements:</span> characters, setting, events, problem, resolution", "<span class='highlight'>Poetic elements:</span> rhyme scheme, rhythm, stanzas", "<span class='highlight'>Narrator:</span> could be first or third person", "<span class='highlight'>Dialect:</span> characters may speak in local dialect", "<span class='highlight'>Structure:</span> each stanza develops the story"]
+              },
+              {
+                rule: "Writing Narrative Poetry", arabicExplanation: "عند كتابة قصيدة سردية، نخطط للقصة أولاً ثم نختار كلمات تتقافى وتحافظ على الإيقاع",
+                explanation: "To write a narrative poem, plan the story first, then choose rhyming words and keep the rhythm consistent. Each verse should develop the story.",
+                examples: ["<span class='highlight'>Plan:</span> What happens? Who is there? Where?", "<span class='highlight'>Rhyme:</span> try to rhyme every other line (ABCB)", "<span class='highlight'>Rhythm:</span> count syllables to make lines even", "<span class='highlight'>Verse 1:</span> introduce the setting and character", "<span class='highlight'>Verse 2:</span> develop the action or journey"]
+              }
+            ],
+            readings: [
+              {
+                title: "School Trip (extract)", text: "We're all going on a school trip today,\nI'm packing my bag with things I can play,\nI'll take my beach ball that's yellow and bright,\nfrisbee, bucket, spade (my bag will be tight)\nand a torch to see when it's dark at night.\nAnd teacher says to bring a sandwich.",
+                vocab_words: ["frisbee", "spade", "narrator", "rhythm", "stanza"],
+                questions: [
+                  { q: "What type of poem is this?", options: ["A haiku", "A narrative poem", "A sonnet", "A limerick"], answer: 1 },
+                  { q: "Who is telling the story?", options: ["The teacher", "A narrator in first person", "A third person narrator", "The school"], answer: 1 },
+                  { q: "What items are packed for the trip?", options: ["Books and pens", "Beach ball, frisbee, bucket, spade", "Sandwiches only", "A torch only"], answer: 1 },
+                  { q: "What does 'dialect' mean in poetry?", options: ["A type of rhyme", "Local or regional way of speaking", "The rhythm of a poem", "The number of syllables"], answer: 1 }
+                ]
+              }
+            ],
+            songs: []
+          },
+          {
+            id: "g5u4", number: 4, term: 2, termColor: "term2",
+            title: "Non-fiction: Information and Explanation Texts",
+            emoji: "🔬", topic: "Information and Explanation Texts",
+            vocabulary: [
+              { word: "explanation text", arabic: "النص التفسيري", example: "An explanation text explains how something works.", phonetic: "/ˌekspləˈneɪʃn tekst/", emoji: "📖" },
+              { word: "process", arabic: "العملية", example: "The text explains the process of water cycle.", phonetic: "/ˈprəʊses/", emoji: "🔄" },
+              { word: "cause and effect", arabic: "السبب والنتيجة", example: "Cause: rain. Effect: floods.", phonetic: "/kɔːz ənd ɪˈfekt/", emoji: "🔗" },
+              { word: "technical vocabulary", arabic: "المفردات التقنية", example: "Technical vocabulary is subject-specific.", phonetic: "/ˈteknɪkl vəˈkæbjʊləri/", emoji: "🔬" },
+              { word: "paragraph", arabic: "الفقرة", example: "Each paragraph covers one main idea.", phonetic: "/ˈpærəɡrɑːf/", emoji: "📝" },
+              { word: "evidence", arabic: "الدليل / الشاهد", example: "Use evidence to support your ideas.", phonetic: "/ˈevɪdəns/", emoji: "🔍" },
+              { word: "conclusion", arabic: "الخاتمة / الاستنتاج", example: "Write a conclusion to end your text.", phonetic: "/kənˈkluːʒn/", emoji: "🏁" },
+              { word: "introduction", arabic: "المقدمة", example: "The introduction tells the reader what to expect.", phonetic: "/ˌɪntrəˈdʌkʃn/", emoji: "📄" },
+              { word: "passive voice", arabic: "صيغة المبني للمجهول", example: "'Water is absorbed by the roots' is passive.", phonetic: "/ˈpæsɪv vɔɪs/", emoji: "🔄" },
+              { word: "impersonal", arabic: "غير شخصي", example: "Explanation texts use impersonal language.", phonetic: "/ɪmˈpɜːsənl/", emoji: "📊" },
+              { word: "phenomenon", arabic: "الظاهرة", example: "A rainbow is a natural phenomenon.", phonetic: "/fɪˈnɒmɪnən/", emoji: "🌈" },
+              { word: "scientific", arabic: "علمي", example: "Use scientific vocabulary in explanations.", phonetic: "/ˌsaɪənˈtɪfɪk/", emoji: "🧪" }
+            ],
+            grammar: [
+              {
+                rule: "Features of Explanation Texts", arabicExplanation: "النصوص التفسيرية تشرح كيف تعمل الأشياء أو لماذا تحدث",
+                explanation: "Explanation texts explain how or why something happens. They have special language features that make them different from other texts.",
+                examples: ["<span class='highlight'>Present tense:</span> Water evaporates when it is heated.", "<span class='highlight'>Technical vocabulary:</span> evaporation, condensation, precipitation", "<span class='highlight'>Cause and effect:</span> Because the sun heats the water, it evaporates.", "<span class='highlight'>Impersonal language:</span> It is known that… / It can be seen that…", "<span class='highlight'>Passive voice:</span> Water is absorbed by the roots of the plant."]
+              },
+              {
+                rule: "Passive Voice", arabicExplanation: "المبني للمجهول يُركّز على الشيء الذي يقع عليه الفعل وليس على من يقوم بالفعل",
+                explanation: "In explanation texts, we often use the passive voice to make the writing sound more formal and scientific. In passive sentences, the thing being acted on comes first.",
+                examples: ["<span class='highlight'>Active:</span> The sun heats the water.", "<span class='highlight'>Passive:</span> The water is heated by the sun.", "<span class='highlight'>Active:</span> Plants absorb water through roots.", "<span class='highlight'>Passive:</span> Water is absorbed by the roots.", "Formula: object + <span class='highlight'>is/are + past participle</span> + by + agent"]
+              }
+            ],
+            readings: [
+              {
+                title: "The Water Cycle", text: "The water cycle is the continuous movement of water on, above, and below Earth's surface. First, water from oceans, rivers, and lakes evaporates into the air when it is heated by the sun. This water vapour rises into the sky. When it cools, it condenses to form clouds. Finally, the water falls back to Earth as rain, snow, or hail in a process called precipitation.",
+                vocab_words: ["process", "cause and effect", "technical vocabulary", "passive voice", "explanation text"],
+                questions: [
+                  { q: "What is the water cycle?", options: ["A story about water", "The continuous movement of water", "A type of weather", "A science experiment"], answer: 1 },
+                  { q: "What causes water to evaporate?", options: ["The moon", "The wind", "The sun's heat", "The cold"], answer: 2 },
+                  { q: "What is precipitation?", options: ["Water evaporating", "Water condensing", "Water falling as rain/snow", "Water flowing in rivers"], answer: 2 },
+                  { q: "What tense is used in explanation texts?", options: ["Past tense", "Future tense", "Present tense", "No tense"], answer: 2 }
+                ]
+              }
+            ],
+            songs: []
+          },
+          {
+            id: "g5u5", number: 5, term: 2, termColor: "term2",
+            title: "Fiction: Stories Developed into a Film",
+            emoji: "🎬", topic: "Charlie and the Chocolate Factory",
+            vocabulary: [
+              { word: "adaptation", arabic: "التكيّف / الاقتباس", example: "The film is an adaptation of the book.", phonetic: "/ˌædæpˈteɪʃn/", emoji: "🎬" },
+              { word: "screenplay", arabic: "السيناريو", example: "The screenplay tells the whole film story.", phonetic: "/ˈskriːnpleɪ/", emoji: "📜" },
+              { word: "perspective", arabic: "المنظور / وجهة النظر", example: "Write from the character's perspective.", phonetic: "/pəˈspektɪv/", emoji: "👁️" },
+              { word: "suspense", arabic: "التشويق", example: "The story builds suspense gradually.", phonetic: "/səˈspens/", emoji: "😰" },
+              { word: "tension", arabic: "التوتر", example: "There is tension when they enter the factory.", phonetic: "/ˈtenʃn/", emoji: "😤" },
+              { word: "predict", arabic: "يتنبأ / يتوقع", example: "Can you predict what happens next?", phonetic: "/prɪˈdɪkt/", emoji: "🔮" },
+              { word: "atmosphere", arabic: "الجو العام / الجو القصصي", example: "The author creates a spooky atmosphere.", phonetic: "/ˈætməsfɪər/", emoji: "🌫️" },
+              { word: "setting", arabic: "الموقع / البيئة", example: "The factory is an amazing setting.", phonetic: "/ˈsetɪŋ/", emoji: "🏭" },
+              { word: "peculiar", arabic: "غريب", example: "Willy Wonka is peculiar and strange.", phonetic: "/pɪˈkjuːliər/", emoji: "🤔" },
+              { word: "luxury", arabic: "الرفاهية", example: "Chocolate is a luxury for Charlie.", phonetic: "/ˈlʌkʃəri/", emoji: "🍫" },
+              { word: "poverty", arabic: "الفقر", example: "Charlie's family lives in poverty.", phonetic: "/ˈpɒvəti/", emoji: "😔" },
+              { word: "golden ticket", arabic: "التذكرة الذهبية", example: "Charlie found a golden ticket!", phonetic: "/ˈɡəʊldən ˈtɪkɪt/", emoji: "🎫" }
+            ],
+            grammar: [
+              {
+                rule: "Building Atmosphere in Fiction", arabicExplanation: "يخلق الكتّاب جواً قصصياً من خلال اختيار الكلمات المناسبة والتفاصيل الحسية",
+                explanation: "Writers create atmosphere through careful word choices. They describe what characters see, hear, smell, taste, and feel to bring the story alive.",
+                examples: ["<span class='highlight'>Sensory description:</span> The sweet smell of chocolate filled the air.", "<span class='highlight'>Suspense:</span> Charlie held his breath. Could it be…?", "<span class='highlight'>Tension:</span> With trembling fingers, he tore open the wrapper.", "<span class='highlight'>Atmosphere words:</span> eerie, magical, mysterious, peculiar", "<span class='highlight'>Contrast:</span> Charlie's cold, cramped house vs. the warm, magical factory."]
+              },
+              {
+                rule: "First vs Third Person Narrative", arabicExplanation: "القصص يمكن أن تُروى من منظور الشخص الأول (أنا) أو الشخص الثالث (هو/هي)",
+                explanation: "Stories can be told in first person (I, we) or third person (he, she, they). Each gives a different perspective.",
+                examples: ["<span class='highlight'>First person:</span> I walked into the factory. I couldn't believe my eyes!", "<span class='highlight'>Third person:</span> Charlie walked into the factory. He couldn't believe his eyes.", "<span class='highlight'>First person effect:</span> reader feels very close to the character", "<span class='highlight'>Third person effect:</span> writer can tell us about many characters"],
+                table: { headers: ["Person", "Pronouns", "Effect"], rows: [["First person", "I, me, we, my", "Personal, immediate"], ["Third person limited", "he, she, they", "One character's view"], ["Third person omniscient", "he, she, they", "All characters' thoughts"]] }
+              }
+            ],
+            readings: [
+              {
+                title: "Charlie and the Golden Ticket", text: "Charlie Bucket lived in a small house with his whole family. They were very, very poor. On his birthday, Charlie received a bar of chocolate. With trembling fingers, he slowly tore open the wrapper. He looked inside. There, shining in the pale winter light, was a Golden Ticket! Charlie's heart began to beat so fast he could hear it. He had won! He had found the last Golden Ticket!",
+                vocab_words: ["poverty", "golden ticket", "suspense", "tension", "atmosphere", "peculiar"],
+                questions: [
+                  { q: "How was Charlie's family?", options: ["Very rich", "Very poor", "Middle class", "Famous"], answer: 1 },
+                  { q: "What did Charlie receive on his birthday?", options: ["A toy", "A golden ticket directly", "A bar of chocolate", "Money"], answer: 2 },
+                  { q: "What is the effect of 'trembling fingers'?", options: ["To show he is cold", "To create suspense and tension", "To show he is angry", "To show he is tired"], answer: 1 },
+                  { q: "What is the writer trying to create in this passage?", options: ["Boredom", "Sadness", "Excitement and suspense", "Fear"], answer: 2 }
+                ]
+              }
+            ],
+            songs: []
+          },
+          {
+            id: "g5u6", number: 6, term: 2, termColor: "term2",
+            title: "Fiction: Classic Literature",
+            emoji: "📚", topic: "Classic Literature",
+            vocabulary: [
+              { word: "classic literature", arabic: "الأدب الكلاسيكي", example: "Treasure Island is classic literature.", phonetic: "/ˈklæsɪk ˈlɪtrɪtʃər/", emoji: "📚" },
+              { word: "archaic language", arabic: "اللغة القديمة / المهجورة", example: "Classic books use archaic language.", phonetic: "/ɑːˈkeɪɪk ˈlæŋɡwɪdʒ/", emoji: "🏛️" },
+              { word: "vocabulary in context", arabic: "المفردات في سياقها", example: "Work out meaning from vocabulary in context.", phonetic: "/vəˈkæbjʊləri ɪn ˈkɒntekst/", emoji: "🔍" },
+              { word: "characterisation", arabic: "توصيف الشخصية / رسم الشخصية", example: "Good characterisation brings characters to life.", phonetic: "/ˌkærəktəraɪˈzeɪʃn/", emoji: "🎭" },
+              { word: "quest", arabic: "المهمة / الرحلة البحثية", example: "The hero goes on a quest for treasure.", phonetic: "/kwest/", emoji: "🗺️" },
+              { word: "peril", arabic: "الخطر الشديد", example: "The sailors were in great peril.", phonetic: "/ˈperəl/", emoji: "⚠️" },
+              { word: "treacherous", arabic: "غادر / خطير", example: "The sea was treacherous and wild.", phonetic: "/ˈtretʃərəs/", emoji: "🌊" },
+              { word: "villain", arabic: "الشرير", example: "Long John Silver is the villain.", phonetic: "/ˈvɪlən/", emoji: "😈" },
+              { word: "protagonist", arabic: "البطل الرئيسي", example: "Jim Hawkins is the protagonist.", phonetic: "/prəˈtæɡənɪst/", emoji: "🦸" },
+              { word: "symbolism", arabic: "الرمزية", example: "The treasure map is a symbol of adventure.", phonetic: "/ˈsɪmbəlɪzəm/", emoji: "🔮" }
+            ],
+            grammar: [
+              {
+                rule: "Reading Classic Literature", arabicExplanation: "الأدب الكلاسيكي يستخدم لغة قديمة وبنية جملة مختلفة عن الكتابة الحديثة",
+                explanation: "Classic literature may use archaic (old-fashioned) language and longer, more complex sentences. We can use context clues to work out the meaning of unfamiliar words.",
+                examples: ["<span class='highlight'>Archaic word:</span> 'methinks' = I think", "<span class='highlight'>Archaic word:</span> 'hath' = has", "<span class='highlight'>Archaic word:</span> 'thou' = you", "<span class='highlight'>Context clue:</span> 'The treacherous sea tossed the ship violently' → treacherous = dangerous", "<span class='highlight'>Long sentences:</span> break them into parts to understand"]
+              },
+              {
+                rule: "Complex Sentences", arabicExplanation: "الجمل المركبة تحتوي على جملة رئيسية وجملة أو أكثر من الجمل الثانوية",
+                explanation: "Classic literature often uses complex sentences with main clauses and subordinate clauses joined by conjunctions.",
+                examples: ["<span class='highlight'>Main clause + subordinate clause:</span>", "Jim searched for the treasure, <span class='highlight'>although he was afraid</span>.", "<span class='highlight'>Subordinate clause first:</span>", "<span class='highlight'>Although the sea was rough</span>, the captain sailed on.", "<span class='highlight'>Conjunctions:</span> although, because, while, when, since, unless"],
+                table: { headers: ["Conjunction", "Use", "Example"], rows: [["although", "contrast", "Although it was cold, she swam."], ["because", "reason", "She swam because it was hot."], ["while", "simultaneous", "He cooked while she read."], ["since", "time/reason", "Since then, things changed."], ["unless", "condition", "Stay unless it rains."]] }
+              }
+            ],
+            readings: [],
+            songs: []
+          },
+          {
+            id: "g5u7", number: 7, term: 3, termColor: "term3",
+            title: "Playscripts: A Playscript, Book and Film",
+            emoji: "🎭", topic: "Comparing Playscript, Book and Film",
+            vocabulary: [
+              { word: "adaptation", arabic: "الاقتباس", example: "The film is an adaptation of the play.", phonetic: "/ˌædæpˈteɪʃn/", emoji: "🎬" },
+              { word: "playscript", arabic: "نص المسرحية", example: "Read the playscript carefully.", phonetic: "/ˈpleɪskrɪpt/", emoji: "📜" },
+              { word: "stage directions", arabic: "إرشادات المسرح", example: "Stage directions are in brackets.", phonetic: "/steɪdʒ dɪˈrekʃənz/", emoji: "🎭" },
+              { word: "camera angle", arabic: "زاوية الكاميرا", example: "The camera angle changes for effect.", phonetic: "/ˈkæmərə ˈæŋɡl/", emoji: "📹" },
+              { word: "close-up", arabic: "لقطة مقربة", example: "A close-up shows character emotions.", phonetic: "/ˈkləʊs ʌp/", emoji: "🔍" },
+              { word: "scene", arabic: "المشهد", example: "In this scene, the hero discovers the truth.", phonetic: "/siːn/", emoji: "🎬" },
+              { word: "dramatic effect", arabic: "التأثير الدرامي", example: "Music creates a dramatic effect.", phonetic: "/drəˈmætɪk ɪˈfekt/", emoji: "🎵" },
+              { word: "audience", arabic: "الجمهور", example: "The audience watched the play silently.", phonetic: "/ˈɔːdiəns/", emoji: "👥" },
+              { word: "compare", arabic: "يقارن", example: "Compare the book and the film version.", phonetic: "/kəmˈpeər/", emoji: "⚖️" },
+              { word: "contrast", arabic: "يتناقض / الفارق", example: "Contrast the playscript with the story.", phonetic: "/ˈkɒntrɑːst/", emoji: "🔄" }
+            ],
+            grammar: [
+              {
+                rule: "Comparing Text Types", arabicExplanation: "يمكننا مقارنة القصة الأصلية والمسرحية والفيلم المأخوذ منها لنرى كيف يُعبّر كل منها عن المعنى",
+                explanation: "The same story can be told through a book, playscript, or film. Each medium uses different techniques to communicate meaning and create effects.",
+                examples: ["<span class='highlight'>Book:</span> describes thoughts, feelings, setting in detail", "<span class='highlight'>Playscript:</span> dialogue and stage directions only", "<span class='highlight'>Film:</span> camera angles, music, lighting, sound effects", "<span class='highlight'>Book:</span> 'He felt terrified as he crept forward.'", "<span class='highlight'>Film:</span> close-up of face + tense music"],
+                table: { headers: ["Medium", "Shows feelings by…", "Shows setting by…"], rows: [["Book", "Describing thoughts", "Descriptive writing"], ["Playscript", "Stage directions, dialogue", "[Scene: dark forest]"], ["Film", "Camera close-up", "Visual images, lighting"]] }
+              },
+              {
+                rule: "Using Modal Verbs", arabicExplanation: "الأفعال الشرطية/الموالية تعبّر عن الإمكانية والاحتمالية والضرورة والنصيحة",
+                explanation: "Modal verbs express possibility, probability, necessity, and advice. They are used before the main verb and do not change form.",
+                examples: ["<span class='highlight'>Possibility:</span> The character might escape.", "<span class='highlight'>Certainty:</span> The hero must succeed.", "<span class='highlight'>Ability:</span> She can speak three languages.", "<span class='highlight'>Advice:</span> You should practise every day.", "<span class='highlight'>Obligation:</span> You must hand in your work."],
+                table: { headers: ["Modal verb", "Meaning"], rows: [["can/could", "ability / possibility"], ["may/might", "possibility"], ["must", "strong obligation/certainty"], ["should", "advice/recommendation"], ["will/would", "future / willingness"], ["shall", "formal offer/suggestion"]] }
+              }
+            ],
+            readings: [],
+            songs: []
+          },
+          {
+            id: "g5u8", number: 8, term: 3, termColor: "term3",
+            title: "Poetry: Poems by Famous Poets",
+            emoji: "🌟", topic: "Poems by Famous Poets",
+            vocabulary: [
+              { word: "stanza", arabic: "المقطع الشعري", example: "The poem has four stanzas.", phonetic: "/ˈstænzə/", emoji: "📜" },
+              { word: "personification", arabic: "التجسيد / تشخيص الجماد", example: "The wind whispered is personification.", phonetic: "/pəˌsɒnɪfɪˈkeɪʃn/", emoji: "💨" },
+              { word: "enjambment", arabic: "استمرار الفكرة إلى السطر التالي", example: "Enjambment is when a line continues to the next.", phonetic: "/ɛnˈdʒæmbmənt/", emoji: "↩️" },
+              { word: "tone", arabic: "النبرة / الأسلوب", example: "The tone of this poem is sad and reflective.", phonetic: "/təʊn/", emoji: "🎭" },
+              { word: "mood", arabic: "المزاج / الجو العاطفي", example: "The mood of the poem changes in verse 3.", phonetic: "/muːd/", emoji: "😊" },
+              { word: "theme", arabic: "الموضوع / الفكرة الرئيسية", example: "The theme of the poem is nature.", phonetic: "/θiːm/", emoji: "💭" },
+              { word: "refrain", arabic: "اللازمة / السطر المتكرر", example: "A refrain is a repeated line in a poem.", phonetic: "/rɪˈfreɪn/", emoji: "🔄" },
+              { word: "allusion", arabic: "التلميح / الإشارة", example: "The poem makes an allusion to ancient Greece.", phonetic: "/əˈluːʒn/", emoji: "🔍" },
+              { word: "analysis", arabic: "التحليل", example: "Analyse the poem carefully.", phonetic: "/əˈnæləsɪs/", emoji: "🔬" },
+              { word: "evaluate", arabic: "يُقيّم", example: "Evaluate how well the poet uses language.", phonetic: "/ɪˈvæljueɪt/", emoji: "⭐" }
+            ],
+            grammar: [
+              {
+                rule: "Analysing Poetry", arabicExplanation: "عند تحليل القصيدة، ننظر في اللغة والبنية والموضوع والأسلوب",
+                explanation: "When we analyse a poem, we look at the language, structure, theme, and tone. We ask: What does the poet want us to feel or think?",
+                examples: ["<span class='highlight'>Language:</span> What specific words has the poet chosen?", "<span class='highlight'>Structure:</span> How many stanzas? What is the rhyme scheme?", "<span class='highlight'>Theme:</span> What is the poem mainly about?", "<span class='highlight'>Tone:</span> Is the poem happy, sad, angry, hopeful?", "<span class='highlight'>Devices:</span> simile, metaphor, personification, alliteration"]
+              },
+              {
+                rule: "Poetic Devices", arabicExplanation: "الشعراء يستخدمون أدوات لغوية مختلفة لإضافة معنى وتأثير لقصائدهم",
+                explanation: "Poets use many language devices to create effects and convey meaning.",
+                examples: ["<span class='highlight'>Personification:</span> The moon smiled down on us.", "<span class='highlight'>Alliteration:</span> The silver sea shimmered silently.", "<span class='highlight'>Metaphor:</span> Life is a rollercoaster.", "<span class='highlight'>Simile:</span> Her eyes were like stars.", "<span class='highlight'>Onomatopoeia:</span> The bees buzzed busily."],
+                table: { headers: ["Device", "Definition", "Example"], rows: [["Simile", "comparison using like/as", "brave as a lion"], ["Metaphor", "says something IS something", "life is a journey"], ["Personification", "gives human qualities to objects", "the wind whispered"], ["Alliteration", "repeated consonant sounds", "silver sea shimmered"], ["Onomatopoeia", "words that sound like what they mean", "buzz, crash, hiss"]] }
+              }
+            ],
+            readings: [],
+            songs: []
+          },
+          {
+            id: "g5u9", number: 9, term: 3, termColor: "term3",
+            title: "Non-fiction: Persuasive Texts",
+            emoji: "💬", topic: "Persuasive Writing",
+            vocabulary: [
+              { word: "persuasive text", arabic: "النص الإقناعي", example: "An advertisement is a persuasive text.", phonetic: "/pəˈsweɪsɪv tekst/", emoji: "📢" },
+              { word: "argument", arabic: "الحجة / الجدال", example: "Give a strong argument for your view.", phonetic: "/ˈɑːɡjʊmənt/", emoji: "💬" },
+              { word: "opinion", arabic: "الرأي", example: "In my opinion, school should start later.", phonetic: "/əˈpɪnjən/", emoji: "💭" },
+              { word: "fact", arabic: "الحقيقة / المعلومة الموثوقة", example: "Unlike an opinion, a fact can be proved.", phonetic: "/fækt/", emoji: "✅" },
+              { word: "rhetorical question", arabic: "السؤال البلاغي", example: "Don't we all want a cleaner world?", phonetic: "/rɪˈtɒrɪkl ˈkwestʃən/", emoji: "❓" },
+              { word: "emotive language", arabic: "اللغة العاطفية", example: "Emotive language makes the reader feel something.", phonetic: "/ɪˈməʊtɪv ˈlæŋɡwɪdʒ/", emoji: "💖" },
+              { word: "counter-argument", arabic: "الحجة المضادة", example: "A good essay addresses the counter-argument.", phonetic: "/ˈkaʊntər ˈɑːɡjʊmənt/", emoji: "⚖️" },
+              { word: "conclude", arabic: "يستنتج / يختتم", example: "We conclude that action is needed now.", phonetic: "/kənˈkluːd/", emoji: "🏁" },
+              { word: "statistics", arabic: "الإحصاءات", example: "Statistics make arguments more convincing.", phonetic: "/stəˈtɪstɪks/", emoji: "📊" },
+              { word: "audience", arabic: "الجمهور المستهدف", example: "Think about your audience when writing.", phonetic: "/ˈɔːdiəns/", emoji: "👥" },
+              { word: "bias", arabic: "التحيز", example: "Persuasive texts may be biased.", phonetic: "/ˈbaɪəs/", emoji: "⚖️" },
+              { word: "convince", arabic: "يُقنع", example: "I want to convince you to recycle.", phonetic: "/kənˈvɪns/", emoji: "💡" }
+            ],
+            grammar: [
+              {
+                rule: "Features of Persuasive Writing", arabicExplanation: "الكتابة الإقناعية تستخدم أدوات لغوية متعددة لإقناع القارئ بوجهة نظر معينة",
+                explanation: "Persuasive texts try to convince the reader to agree with a point of view. They use special language features to make arguments sound strong.",
+                examples: ["<span class='highlight'>Rhetorical question:</span> Surely we can do better than this?", "<span class='highlight'>Emotive language:</span> innocent children, devastating consequences", "<span class='highlight'>Statistics:</span> 80% of people agree that…", "<span class='highlight'>Rule of three:</span> This is important, essential, and vital.", "<span class='highlight'>Connectives:</span> Furthermore, However, Therefore, As a result"],
+                table: { headers: ["Device", "Purpose", "Example"], rows: [["Rhetorical question", "Makes reader agree", "Don't we all want peace?"], ["Emotive language", "Creates strong feelings", "suffering children"], ["Rule of three", "Emphasis", "simple, effective, proven"], ["Statistics", "Seems factual", "9 out of 10 doctors..."], ["Counter-argument", "Shows fairness", "Some may argue… However…"]] }
+              },
+              {
+                rule: "Connectives for Persuasion", arabicExplanation: "نستخدم أدوات ربط خاصة في الكتابة الإقناعية لتنظيم الحجج والأدلة",
+                explanation: "Persuasive writing uses specific connectives to link arguments, add more points, contrast ideas, and reach conclusions.",
+                examples: ["<span class='highlight'>Adding:</span> Furthermore, Moreover, In addition, Also", "<span class='highlight'>Contrasting:</span> However, On the other hand, Nevertheless", "<span class='highlight'>Giving reasons:</span> Because, Since, As a result, Therefore", "<span class='highlight'>Concluding:</span> In conclusion, To sum up, Overall", "<span class='highlight'>Emphasising:</span> Indeed, Clearly, Obviously, Without doubt"]
+              }
+            ],
+            readings: [
+              {
+                title: "Should Students Have Homework?", text: "In my opinion, homework should be banned from primary schools. Firstly, children need time to play and rest after a long school day. Studies show that excessive homework can cause stress and anxiety in young children. Furthermore, children learn just as well without homework. On the other hand, some people argue that homework reinforces learning. However, research suggests that family time and play are just as important for development. In conclusion, I strongly believe that homework for primary school children should be reduced significantly.",
+                vocab_words: ["persuasive text", "rhetorical question", "emotive language", "counter-argument", "conclude"],
+                questions: [
+                  { q: "What is the writer's opinion about homework?", options: ["It is very important", "It should be banned", "It helps children learn", "It should be increased"], answer: 1 },
+                  { q: "What is the counter-argument mentioned?", options: ["Children need rest", "Homework causes stress", "Homework reinforces learning", "Family time is important"], answer: 2 },
+                  { q: "What does 'in conclusion' signal?", options: ["A new argument", "The counter-argument", "The summary and final point", "An introduction"], answer: 2 },
+                  { q: "What is emotive language used for?", options: ["To give facts", "To make the reader feel something", "To add statistics", "To list items"], answer: 1 }
+                ]
+              }
+            ],
+            songs: []
+          }
+        ]
+      }
+    };
+
+    // ============================================================
+    // APP STATE
+    // ============================================================
+    let currentGrade = null;
+    let currentUnit = null;
+    let currentSection = 'vocab';
+    let currentView = 'units';
+    let quizState = { questions: [], current: 0, score: 0, answers: [], wrongOnes: [] };
+    let fmIndex = 0;
+    let fmWords = [];
+    let currentFmWord = '';
+    let speechSpeed = false; // false = normal, true = slow
+    let darkMode = false;
+
+    // ============================================================
+    // LOCALSTORAGE HELPERS
+    // ============================================================
+    const LS = {
+      get(key, def) { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : def; } catch (e) { return def; } },
+      set(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) { } }
+    };
+    function gradeKey(suffix) { return `grade${currentGrade}_${suffix}`; }
+    function getSavedWords() { return LS.get(gradeKey('saved_words'), []); }
+    function saveWord(word) { const s = getSavedWords(); if (!s.includes(word)) { s.push(word); LS.set(gradeKey('saved_words'), s); } }
+    function unsaveWord(word) { const s = getSavedWords().filter(w => w !== word); LS.set(gradeKey('saved_words'), s); }
+    function isWordSaved(word) { return getSavedWords().includes(word); }
+    function getQuizScore(unitId) { return LS.get(gradeKey('quiz_scores'), {})[unitId] || null; }
+    function saveQuizScore(unitId, score, total) { const all = LS.get(gradeKey('quiz_scores'), {}); all[unitId] = { score, total, date: new Date().toLocaleDateString() }; LS.set(gradeKey('quiz_scores'), all); }
+    function getCompletedUnits() { return LS.get(gradeKey('completed_units'), []); }
+    function markUnitComplete(unitId) { const c = getCompletedUnits(); if (!c.includes(unitId)) { c.push(unitId); LS.set(gradeKey('completed_units'), c); } }
+    function getAchievements() { return LS.get(gradeKey('achievements'), []); }
+    function addAchievement(badge) { const a = getAchievements(); if (!a.includes(badge)) { a.push(badge); LS.set(gradeKey('achievements'), a); } }
+    function confirmReset() { LS.set(gradeKey('saved_words'), []); LS.set(gradeKey('quiz_scores'), {}); LS.set(gradeKey('completed_units'), []); LS.set(gradeKey('achievements'), []); closeModal('resetModal'); showMascotMsg('Progress reset! Fresh start! 🌱'); renderDashboard(); updateTopProgress(); }
+    function exportProgress() {
+      const grade = currentGrade;
+      const scores = LS.get(gradeKey('quiz_scores'), {});
+      const saved = getSavedWords();
+      const completed = getCompletedUnits();
+      let report = `Cambridge Primary English — Grade ${grade} Progress Report\n`;
+      report += `Generated: ${new Date().toLocaleDateString()}\n\n`;
+      report += `Saved Words: ${saved.length}\nCompleted Units: ${completed.length}\n\n`;
+      report += `Quiz Scores:\n`;
+      Object.entries(scores).forEach(([id, s]) => { report += `  ${id}: ${s.score}/${s.total} (${s.date})\n`; });
+      const blob = new Blob([report], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `english_grade${grade}_report.txt`;
+      a.click();
+    }
+
+    // ============================================================
+    // NAVIGATION
+    // ============================================================
+    function selectGrade(grade) {
+      currentGrade = grade;
+      LS.set('settings_selected_grade', grade);
+      document.getElementById('screen-landing').classList.remove('active');
+      document.getElementById('screen-app').classList.add('active');
+      const gradeLabel = document.getElementById('topBarGrade');
+      gradeLabel.textContent = `Grade ${grade}`;
+      gradeLabel.className = `top-bar-grade ${grade === 5 ? 'grade5' : ''}`;
+      document.getElementById('topBarLogo').textContent = `📚 Grade ${grade} English`;
+      renderUnitNav();
+      renderUnitsGrid();
+      updateTopProgress();
+      showView('units');
+      showMascotMsg(`Welcome to Grade ${grade}! Let's learn! 🎓`);
+    }
+    function goHome() { document.getElementById('screen-app').classList.remove('active'); document.getElementById('screen-landing').classList.add('active'); currentGrade = null; }
+    function showView(view) {
+      currentView = view;
+      ['units', 'unit', 'dashboard'].forEach(v => { const el = document.getElementById(`view-${v}`); if (el) el.style.display = 'none'; });
+      const target = document.getElementById(`view-${view}`);
+      if (target) { target.style.display = 'block'; target.style.animation = 'fadeInUp 0.4s both'; }
+      ['nav-units', 'nav-dashboard'].forEach(id => document.getElementById(id)?.classList.remove('active'));
+      if (view === 'units') document.getElementById('nav-units')?.classList.add('active');
+      if (view === 'dashboard') { document.getElementById('nav-dashboard')?.classList.add('active'); renderDashboard(); }
+      closeSidebar();
+    }
+    function openUnit(unitId) {
+      const data = curriculumData[`grade${currentGrade}`];
+      currentUnit = data.units.find(u => u.id === unitId);
+      if (!currentUnit) return;
+      document.getElementById('unitDetailTitle').innerHTML = `<span class="title-icon">${currentUnit.emoji}</span> Unit ${currentUnit.number}: ${currentUnit.title}`;
+      showView('unit');
+      showSection('vocab');
+      renderVocab();
+    }
+    function showSection(section) {
+      currentSection = section;
+      ['vocab', 'grammar', 'reading', 'quiz', 'dictation', 'translation'].forEach(s => { const el = document.getElementById(`section-${s}`); if (el) el.style.display = 'none'; });
+      const target = document.getElementById(`section-${section}`);
+      if (target) { target.style.display = 'block'; target.style.animation = 'fadeInUp 0.3s both'; }
+      document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+        const sections = ['vocab', 'grammar', 'reading', 'quiz', 'dictation', 'translation'];
+        btn.classList.toggle('active', sections[i] === section);
+      });
+      if (section === 'grammar') renderGrammar();
+      if (section === 'reading') renderReading();
+      if (section === 'quiz') startQuiz();
+      if (section === 'dictation') renderDictation();
+      if (section === 'translation') renderTranslation();
+    }
+
+    // ============================================================
+    // RENDER UNITS
+    // ============================================================
+    function renderUnitsGrid() {
+      const data = curriculumData[`grade${currentGrade}`];
+      const grid = document.getElementById('unitsGrid');
+      const title = document.getElementById('unitsTitle');
+      title.textContent = data.title;
+      grid.innerHTML = '';
+      const scores = LS.get(gradeKey('quiz_scores'), {});
+      const completed = getCompletedUnits();
+      data.units.forEach((unit, i) => {
+        const score = scores[unit.id];
+        const done = completed.includes(unit.id);
+        const div = document.createElement('div');
+        div.className = `unit-card ${unit.termColor}-card stagger-${Math.min(i + 1, 9)}`;
+        div.innerHTML = `
+      <div class="unit-number">Unit ${unit.number} · Term ${Math.ceil(unit.number / 3)}</div>
+      <h3>${unit.emoji} ${unit.title}</h3>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:0.7rem">${unit.topic}</p>
+      <div class="unit-meta">
+        <span class="unit-tag" style="background:rgba(74,144,217,0.12);color:var(--sky)">${unit.vocabulary.length} words</span>
+        <span class="unit-tag" style="background:rgba(75,200,160,0.12);color:var(--mint)">${unit.grammar.length} rules</span>
+        ${done ? '<span class="unit-tag" style="background:rgba(75,200,160,0.2);color:var(--mint)">✓ Done</span>' : ''}
+        ${score ? `<span class="unit-tag" style="background:rgba(255,215,64,0.2);color:#a07800">🏆 ${Math.round(score.score / score.total * 100)}%</span>` : ''}
+      </div>`;
+        div.onclick = () => openUnit(unit.id);
+        grid.appendChild(div);
+      });
+    }
+    function renderUnitNav() {
+      const data = curriculumData[`grade${currentGrade}`];
+      const list = document.getElementById('unitNavList');
+      document.getElementById('unitNavTitle').textContent = `Grade ${currentGrade} Units`;
+      list.innerHTML = '';
+      data.units.forEach(unit => {
+        const div = document.createElement('div');
+        div.className = 'nav-item';
+        div.innerHTML = `<span class="nav-icon">${unit.emoji}</span> Unit ${unit.number}`;
+        div.onclick = () => openUnit(unit.id);
+        list.appendChild(div);
+      });
+    }
+
+    // ============================================================
+    // RENDER VOCAB
+    // ============================================================
+    function renderVocab(filter = 'all') {
+      if (!currentUnit) return;
+      const saved = getSavedWords();
+      let words = currentUnit.vocabulary;
+      if (filter === 'saved') words = words.filter(w => saved.includes(w.word));
+      if (filter === 'unsaved') words = words.filter(w => !saved.includes(w.word));
+      const grid = document.getElementById('flashcardGrid');
+      const counter = document.getElementById('vocabCounter');
+      counter.textContent = `📚 ${saved.filter(w => currentUnit.vocabulary.some(v => v.word === w)).length} / ${currentUnit.vocabulary.length} words saved`;
+      grid.innerHTML = '';
+      if (!words.length) { grid.innerHTML = '<div class="empty-state"><div class="empty-emoji">🔍</div><p>No words to show</p></div>'; return; }
+      words.forEach((vocab, i) => {
+        const isSaved = saved.includes(vocab.word);
+        const card = document.createElement('div');
+        card.className = `flashcard stagger-${Math.min(i + 1, 9)}`;
+        card.id = `fc_${vocab.word.replace(/\s/g, '_')}`;
+        card.onclick = () => card.classList.toggle('flipped');
+        card.innerHTML = `
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="card-emoji">${vocab.emoji}</div>
+          <div class="card-word">${vocab.word}</div>
+          <div class="card-phonetic">${vocab.phonetic}</div>
+          <div class="card-actions" onclick="event.stopPropagation()">
+            <button class="speak-btn" onclick="speakText('${vocab.word}')" title="Listen">🔊</button>
+            <button class="save-btn ${isSaved ? 'saved' : ''}" id="sb_${vocab.word.replace(/\s/g, '_')}" onclick="toggleSave('${vocab.word}',this)" title="${isSaved ? 'Saved' : 'Save'}">
+              ${isSaved ? '✓' : '☆'}
+            </button>
+          </div>
+        </div>
+        <div class="flashcard-back">
+          <div class="card-arabic">${vocab.arabic}</div>
+          <div class="card-example">${vocab.example}</div>
+          <div style="font-size:0.75rem;color:var(--muted);margin-top:4px">${vocab.phonetic}</div>
+        </div>
+      </div>`;
+        grid.appendChild(card);
+      });
+      fmWords = words;
+    }
+    function filterVocab(type, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderVocab(type);
+    }
+    function toggleSave(word, btn) {
+      if (isWordSaved(word)) { unsaveWord(word); btn.textContent = '☆'; btn.classList.remove('saved'); }
+      else { saveWord(word); btn.textContent = '✓'; btn.classList.add('saved'); }
+      const counter = document.getElementById('vocabCounter');
+      const saved = getSavedWords();
+      if (currentUnit) counter.textContent = `📚 ${saved.filter(w => currentUnit.vocabulary.some(v => v.word === w)).length} / ${currentUnit.vocabulary.length} words saved`;
+      updateTopProgress();
+    }
+
+    // ============================================================
+    // FLASHCARD MODE
+    // ============================================================
+    function openFmMode() {
+      if (!fmWords.length) { alert('No words to study!'); return; }
+      fmIndex = 0;
+      document.getElementById('flashcardMode').classList.add('open');
+      showFmCard();
+    }
+    function closeFmMode() { document.getElementById('flashcardMode').classList.remove('open'); }
+    function showFmCard() {
+      if (!fmWords.length) return;
+      const word = fmWords[fmIndex];
+      currentFmWord = word.word;
+      const fc = document.getElementById('fmCard');
+      fc.classList.remove('flipped');
+      document.getElementById('fmEmoji').textContent = word.emoji;
+      document.getElementById('fmWord').textContent = word.word;
+      document.getElementById('fmPhonetic').textContent = word.phonetic;
+      document.getElementById('fmArabic').textContent = word.arabic;
+      document.getElementById('fmExample').textContent = word.example;
+      document.getElementById('fmCounter').textContent = `${fmIndex + 1} / ${fmWords.length}`;
+    }
+    function flipFmCard() { document.getElementById('fmCard').classList.toggle('flipped'); }
+    function nextFmCard() { fmIndex = (fmIndex + 1) % fmWords.length; showFmCard(); }
+    function prevFmCard() { fmIndex = (fmIndex - 1 + fmWords.length) % fmWords.length; showFmCard(); }
+
+    // ============================================================
+    // RENDER GRAMMAR
+    // ============================================================
+    function renderGrammar() {
+      if (!currentUnit) return;
+      const container = document.getElementById('grammarContent');
+      container.innerHTML = '';
+      if (!currentUnit.grammar.length) { container.innerHTML = '<div class="empty-state"><div class="empty-emoji">📝</div><p>Grammar content for this unit</p></div>'; return; }
+      currentUnit.grammar.forEach((rule, i) => {
+        const card = document.createElement('div');
+        card.className = `grammar-card stagger-${Math.min(i + 1, 5)}`;
+        let tableHTML = '';
+        if (rule.table) {
+          tableHTML = `<table class="grammar-table"><thead><tr>${rule.table.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rule.table.rows.map(row => `<tr>${row.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+        }
+        card.innerHTML = `
+      <h3>📐 ${rule.rule}</h3>
+      <div class="grammar-explanation">${rule.explanation}</div>
+      ${(rule.arabicExplanation || rule.arabicExplain) ? `<div class="grammar-arabic">🔤 ${rule.arabicExplanation || rule.arabicExplain}</div>` : ''}
+      <div class="grammar-examples">${(rule.examples || []).map(e => `<div class="grammar-example">${e}</div>`).join('')}</div>
+      ${tableHTML}`;
+        container.appendChild(card);
+      });
+    }
+
+    // ============================================================
+    // RENDER READING
+    // ============================================================
+    function renderReading() {
+      if (!currentUnit) return;
+      const container = document.getElementById('readingContent');
+      container.innerHTML = '';
+      if (!currentUnit.readings.length) { container.innerHTML = '<div class="empty-state"><div class="empty-emoji">📖</div><p>Reading texts for this unit coming soon</p></div>'; return; }
+      currentUnit.readings.forEach(reading => {
+        const card = document.createElement('div');
+        card.className = 'reading-card fade-in-up';
+        let textHTML = reading.text;
+        if (reading.vocab_words) {
+          reading.vocab_words.forEach(w => {
+            const regex = new RegExp(`\\b${w}\\b`, 'gi');
+            textHTML = textHTML.replace(regex, `<span class="vocab-highlight" onclick="showWordPopup('${w}',event)">${w}</span>`);
+          });
+        }
+        textHTML = textHTML.split('\n').map(line => line ? `<p>${line}</p>` : '<br>').join('');
+        let questionsHTML = '';
+        if (reading.questions?.length) {
+          questionsHTML = `<div class="reading-questions"><h4 style="margin-bottom:0.7rem">📋 Comprehension Questions</h4>` +
+            reading.questions.map((q, i) => `
+          <div class="reading-q" id="rq_${i}">
+            <div style="margin-bottom:0.5rem">${i + 1}. ${q.q}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
+              ${q.options.map((opt, j) => `<button class="option-btn" style="flex:1;min-width:120px;padding:0.5rem" onclick="answerReadingQ(${i},${j},${q.answer},this)">${opt}</button>`).join('')}
+            </div>
+          </div>`).join('') + '</div>';
+        }
+        card.innerHTML = `
+      <h3 style="margin-bottom:1rem;font-size:1.2rem">${reading.title}</h3>
+      <button class="action-btn btn-primary" style="margin-bottom:1rem;font-size:0.85rem" onclick="speakText(this.closest('.reading-card').querySelector('.reading-text').innerText)">🔊 Listen</button>
+      <div class="reading-text">${textHTML}</div>
+      ${questionsHTML}`;
+        container.appendChild(card);
+      });
+    }
+    function answerReadingQ(qi, answer, correct, btn) {
+      const container = btn.closest('.reading-q');
+      const btns = container.querySelectorAll('.option-btn');
+      btns.forEach(b => b.disabled = true);
+      if (answer === correct) { btn.classList.add('correct'); }
+      else { btn.classList.add('wrong'); btns[correct].classList.add('correct'); }
+    }
+    function showWordPopup(word, event) {
+      event.stopPropagation();
+      const data = curriculumData[`grade${currentGrade}`];
+      let vocab = null;
+      for (const unit of data.units) { vocab = unit.vocabulary.find(v => v.word.toLowerCase() === word.toLowerCase()); if (vocab) break; }
+      if (!vocab) return;
+      const popup = document.getElementById('wordPopup');
+      document.getElementById('popupWord').textContent = vocab.word;
+      document.getElementById('popupPhonetic').textContent = vocab.phonetic;
+      document.getElementById('popupArabic').textContent = vocab.arabic;
+      document.getElementById('popupExample').textContent = vocab.example;
+      popup.style.display = 'block';
+      const x = Math.min(event.clientX, window.innerWidth - 220);
+      const y = Math.min(event.clientY + 10, window.innerHeight - 150);
+      popup.style.left = x + 'px'; popup.style.top = y + 'px';
+    }
+    document.addEventListener('click', () => { document.getElementById('wordPopup').style.display = 'none'; });
+
+    // ============================================================
+    // QUIZ SYSTEM
+    // ============================================================
+    function generateQuestions(unit) {
+      const qs = [];
+      const vocab = unit.vocabulary;
+      const grammar = unit.grammar;
+      const readings = unit.readings;
+
+      // 1. MCQ — What does [word] mean?
+      vocab.forEach((v, i) => {
+        const distractors = vocab.filter((_, j) => j !== i).map(w => w.arabic);
+        shuffle(distractors);
+        const opts = [v.arabic, ...distractors.slice(0, 3)];
+        shuffle(opts);
+        qs.push({ type: 'mcq', question: `What does "<strong>${v.word}</strong>" mean?`, emoji: v.emoji, options: opts, answer: opts.indexOf(v.arabic), explanation: `"${v.word}" means "${v.arabic}". Example: ${v.example}`, category: 'vocabulary' });
+      });
+
+      // 2. MCQ — Which word means [arabic]?
+      vocab.forEach((v, i) => {
+        const distractors = vocab.filter((_, j) => j !== i).map(w => w.word);
+        shuffle(distractors);
+        const opts = [v.word, ...distractors.slice(0, 3)];
+        shuffle(opts);
+        qs.push({ type: 'mcq', question: `Which English word means: "<strong>${v.arabic}</strong>"?`, emoji: '🔤', options: opts, answer: opts.indexOf(v.word), explanation: `The correct word is "${v.word}". It means "${v.arabic}".`, category: 'vocabulary' });
+      });
+
+      // 3. Fill in the blank — example sentences
+      vocab.forEach(v => {
+        const blanked = v.example.replace(new RegExp(`\\b${v.word}\\b`, 'i'), '______');
+        if (blanked.includes('______')) {
+          qs.push({ type: 'fill', question: `Complete the sentence:<br><em>"${blanked}"</em>`, emoji: '✏️', answer: v.word.toLowerCase(), hint: v.arabic, explanation: `The answer is "<strong>${v.word}</strong>". ${v.arabic} — ${v.example}`, category: 'fill' });
+        }
+      });
+
+      // 4. True/False
+      vocab.forEach((v, i) => {
+        const isTrue = Math.random() > 0.5;
+        let stmt, correctAnswer;
+        if (isTrue) { stmt = `"${v.word}" means "${v.arabic}"`; correctAnswer = 'True'; }
+        else { const other = vocab[(i + 1) % vocab.length]; stmt = `"${v.word}" means "${other.arabic}"`; correctAnswer = 'False'; }
+        qs.push({ type: 'mcq', question: `True or False: ${stmt}`, emoji: '🤔', options: ['True', 'False'], answer: correctAnswer === 'True' ? 0 : 1, explanation: `${correctAnswer}! "${v.word}" means "${v.arabic}".`, category: 'truefalse' });
+      });
+
+      // 5. Word + Emoji match
+      vocab.slice(0, 10).forEach((v, i) => {
+        const distractors = vocab.filter((_, j) => j !== i).map(w => w.emoji).filter(e => e !== v.emoji);
+        shuffle(distractors);
+        const opts = [v.emoji, ...distractors.slice(0, 3)];
+        shuffle(opts);
+        qs.push({ type: 'mcq', question: `Which emoji matches the word "<strong>${v.word}</strong>"?`, emoji: '🎯', options: opts, answer: opts.indexOf(v.emoji), explanation: `"${v.word}" (${v.arabic}) is shown by ${v.emoji}. Example: ${v.example}`, category: 'emoji' });
+      });
+
+      // 6. Reading comprehension
+      readings.forEach(r => {
+        if (r.questions) r.questions.forEach(q => {
+          qs.push({ type: 'mcq', question: q.q, emoji: '📖', options: q.options, answer: q.answer, explanation: `From the reading "${r.title}": the correct answer is option ${q.answer + 1}.`, category: 'reading' });
+        });
+      });
+
+      // 7. Word order (using grammar examples)
+      grammar.forEach(rule => {
+        if (rule.table) {
+          rule.table.rows.slice(0, 3).forEach(row => {
+            if (row.length > 1 && row[row.length - 1].length > 4) {
+              const words = row[row.length - 1].split(' ');
+              if (words.length >= 3) {
+                const shuffled = [...words]; shuffle(shuffled);
+                qs.push({ type: 'order', question: `Rearrange the words to make a correct sentence:`, emoji: '🔤', words: shuffled, answer: row[row.length - 1].toLowerCase(), explanation: `The correct order is: <strong>${row[row.length - 1]}</strong>`, category: 'order' });
+              }
+            }
+          });
+        }
+      });
+
+      // 8. Grammar MCQ
+      grammar.forEach(rule => {
+        if (rule.examples && rule.examples.length >= 2) {
+          const exMatch = rule.examples[0].match(/content='(.+?)'/);
+          const corrEx = rule.examples[0].replace(/<[^>]+>/g, '');
+          const wrongEx = rule.examples[0].replace(/<[^>]+>/g, '').replace(/\b(helps|helped|climbing|climbed|is|are|was|were)\b/, w => {
+            const map = { helps: 'help', helped: 'helps', climbing: 'climb', climbed: 'climbs', is: 'are', are: 'is', was: 'were', were: 'was' };
+            return map[w] || w + 's';
+          });
+          qs.push({ type: 'mcq', question: `Which sentence uses <strong>${rule.rule}</strong> correctly?`, emoji: '📝', options: [corrEx.trim(), wrongEx.trim()], answer: 0, explanation: `Correct! Rule: ${rule.arabicExplanation || rule.arabicExplain || rule.explanation}`, category: 'grammar' });
+        }
+      });
+
+      shuffle(qs);
+      return qs.slice(0, Math.min(qs.length, 40));
+    }
+
+    function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+
+    function startQuiz() {
+      if (!currentUnit) return;
+      const qs = generateQuestions(currentUnit);
+      quizState = { questions: qs, current: 0, score: 0, answers: [], wrongOnes: [] };
+      renderQuizQuestion();
+    }
+    function renderQuizQuestion() {
+      const container = document.getElementById('quizContent');
+      const { questions, current, score } = quizState;
+      if (current >= questions.length) { showQuizResults(); return; }
+      const q = questions[current];
+      const pct = Math.round(current / questions.length * 100);
+      container.innerHTML = `
+    <div class="quiz-header">
+      <div class="quiz-progress-wrap">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="quiz-count">Question ${current + 1} of ${questions.length}</span>
+          <span class="quiz-score-display">Score: ${score}</span>
+        </div>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${pct}%"></div></div>
+      </div>
+    </div>
+    <div class="question-card" id="qCard">
+      <div class="question-type">${q.category}</div>
+      <div class="question-emoji">${q.emoji}</div>
+      <div class="question-text">${q.question}</div>
+      ${q.type === 'fill' ? renderFillQ(q) : q.type === 'order' ? renderOrderQ(q) : renderMCQ(q)}
+    </div>`;
+    }
+    function renderMCQ(q) {
+      return `<div class="options">${q.options.map((opt, i) => `<button class="option-btn" onclick="answerMCQ(${i})">${opt}</button>`).join('')}</div>`;
+    }
+    function renderFillQ(q) {
+      return `<input class="fill-blank-input" id="fillInput" placeholder="Type your answer..." onkeypress="if(event.key==='Enter')checkFill()">
+          <div style="display:flex;gap:0.7rem;align-items:center;flex-wrap:wrap">
+            <button class="check-btn" onclick="checkFill()">Check ✓</button>
+            <button class="hint-btn" onclick="showHint('${q.hint}')">💡 Hint: ${q.hint}</button>
+          </div>`;
+    }
+    function showHint(hint) { showMascotMsg(`Hint: ${hint} 💡`); }
+    function renderOrderQ(q) {
+      let placed = [];
+      let available = [...q.words];
+      const woId = 'wo_' + Math.random().toString(36).substr(2, 5);
+      return `<div id="${woId}_placed" class="word-order-words" style="min-height:50px"></div>
+          <div class="word-bank" id="${woId}_bank">${available.map((w, i) => `<button class="bank-word" id="${woId}_${i}" onclick="placeWord(this,'${woId}','${w}')">${w}</button>`).join('')}</div>
+          <button class="check-btn" onclick="checkOrder('${q.answer}','${woId}')">Check ✓</button>`;
+    }
+    function placeWord(btn, id, word) {
+      if (btn.classList.contains('used')) return;
+      btn.classList.add('used');
+      const placed = document.getElementById(`${id}_placed`);
+      const span = document.createElement('span');
+      span.className = 'wo-word';
+      span.textContent = word;
+      span.onclick = () => { span.remove(); btn.classList.remove('used'); };
+      placed.appendChild(span);
+    }
+    function checkOrder(correct, id) {
+      const placed = document.getElementById(`${id}_placed`);
+      const answer = [...placed.querySelectorAll('.wo-word')].map(s => s.textContent).join(' ').toLowerCase().trim();
+      const isCorrect = answer === correct.toLowerCase().trim();
+      const feedback = document.createElement('div');
+      feedback.className = `feedback-box ${isCorrect ? 'correct-fb' : 'wrong-fb'}`;
+      feedback.innerHTML = `<div class="feedback-title">${isCorrect ? '✅ Correct!' : '❌ Not quite!'}</div><div class="feedback-text">The correct order is: <strong>${correct}</strong></div>`;
+      document.getElementById(`${id}_placed`).after(feedback);
+      document.querySelectorAll('.bank-word,.wo-word').forEach(b => b.onclick = null);
+      if (isCorrect) { quizState.score++; playSound('correct'); } else { playSound('wrong'); }
+      quizState.answers.push(isCorrect);
+      if (!isCorrect) quizState.wrongOnes.push(quizState.questions[quizState.current]);
+      addNextBtn();
+    }
+    function answerMCQ(selected) {
+      const q = quizState.questions[quizState.current];
+      const btns = document.querySelectorAll('.option-btn');
+      btns.forEach(b => b.disabled = true);
+      const isCorrect = selected === q.answer;
+      btns[selected].classList.add(isCorrect ? 'correct' : 'wrong');
+      if (!isCorrect) btns[q.answer].classList.add('correct');
+      const fb = document.createElement('div');
+      fb.className = `feedback-box ${isCorrect ? 'correct-fb' : 'wrong-fb'}`;
+      fb.innerHTML = `<div class="feedback-title">${isCorrect ? '✅ Excellent!' : '❌ Not quite!'}</div><div class="feedback-text">${q.explanation}</div>`;
+      document.getElementById('qCard').appendChild(fb);
+      if (isCorrect) { quizState.score++; playSound('correct'); } else { playSound('wrong'); }
+      quizState.answers.push(isCorrect);
+      if (!isCorrect) quizState.wrongOnes.push(q);
+      addNextBtn();
+    }
+    function checkFill() {
+      const inp = document.getElementById('fillInput');
+      const q = quizState.questions[quizState.current];
+      const userAns = inp.value.trim().toLowerCase().replace(/[.,!?]/g, '');
+      const correct = q.answer.toLowerCase().replace(/[.,!?]/g, '');
+      const isCorrect = userAns === correct || levenshtein(userAns, correct) <= 1;
+      inp.disabled = true;
+      inp.style.borderColor = isCorrect ? '#28a745' : '#dc3545';
+      const fb = document.createElement('div');
+      fb.className = `feedback-box ${isCorrect ? 'correct-fb' : 'wrong-fb'}`;
+      fb.innerHTML = `<div class="feedback-title">${isCorrect ? '✅ Correct!' : '❌ Not quite!'}</div><div class="feedback-text">${q.explanation}</div>`;
+      inp.after(fb);
+      if (isCorrect) { quizState.score++; playSound('correct'); } else { playSound('wrong'); }
+      quizState.answers.push(isCorrect);
+      if (!isCorrect) quizState.wrongOnes.push(q);
+      addNextBtn();
+    }
+    function addNextBtn() {
+      const existing = document.querySelector('.next-btn');
+      if (existing) return;
+      const btn = document.createElement('button');
+      btn.className = 'next-btn';
+      btn.textContent = quizState.current < quizState.questions.length - 1 ? 'Next Question →' : 'See Results 🎯';
+      btn.onclick = () => { quizState.current++; renderQuizQuestion(); };
+      document.getElementById('qCard').appendChild(btn);
+    }
+    function levenshtein(a, b) {
+      const m = a.length, n = b.length;
+      const dp = Array.from({ length: m + 1 }, (_, i) => Array.from({ length: n + 1 }, (_, j) => i === 0 ? j : j === 0 ? i : 0));
+      for (let i = 1; i <= m; i++)for (let j = 1; j <= n; j++) dp[i][j] = a[i - 1] === b[j - 1] ? dp[i - 1][j - 1] : 1 + Math.min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j]);
+      return dp[m][n];
+    }
+    function showQuizResults() {
+      const { questions, score, wrongOnes } = quizState;
+      const total = questions.length;
+      const pct = Math.round(score / total * 100);
+      const grade = pct >= 90 ? 'A+' : pct >= 80 ? 'A' : pct >= 70 ? 'B' : pct >= 60 ? 'C' : 'D';
+      const circleColor = pct >= 80 ? 'var(--mint)' : pct >= 60 ? 'var(--sun)' : 'var(--coral)';
+      saveQuizScore(currentUnit.id, score, total);
+      if (pct >= 80) { markUnitComplete(currentUnit.id); addAchievement(`Unit ${currentUnit.number} Master`); }
+      updateTopProgress();
+      const container = document.getElementById('quizContent');
+      container.innerHTML = `
+    <div class="results-screen">
+      <div class="results-score-circle" style="background:${circleColor}20;border:6px solid ${circleColor}">
+        <div class="results-percent" style="color:${circleColor}">${pct}%</div>
+        <div class="results-grade" style="color:${circleColor}">Grade ${grade}</div>
+      </div>
+      <div class="results-message">${pct >= 90 ? '🌟 Outstanding! You\'re a star!' : pct >= 80 ? '🎉 Excellent work!' : pct >= 70 ? '👍 Good job! Keep it up!' : pct >= 60 ? '💪 Not bad! Practice more!' : '💡 Keep studying, you can do it!'}</div>
+      <div class="results-stats">
+        <div class="stat-item"><div class="stat-num" style="color:var(--mint)">${score}</div><div class="stat-label">Correct</div></div>
+        <div class="stat-item"><div class="stat-num" style="color:var(--coral)">${total - score}</div><div class="stat-label">Wrong</div></div>
+        <div class="stat-item"><div class="stat-num" style="color:var(--sky)">${pct}%</div><div class="stat-label">Score</div></div>
+      </div>
+      ${wrongOnes.length ? `<div class="wrong-answers"><h4 style="margin-bottom:0.5rem">❌ Review These Questions:</h4>${wrongOnes.map(q => `<div class="wrong-answer-item"><strong>${q.question.replace(/<[^>]+>/g, '')}</strong><br>✅ ${q.options ? q.options[q.answer] : q.answer}</div>`).join('')}</div>` : ''}
+      <div class="results-btns">
+        <button class="result-btn btn-retry" onclick="startQuiz()">🔄 Try Again</button>
+        ${wrongOnes.length ? `<button class="result-btn btn-practice" onclick="practiceWrong()">📝 Practice Wrong</button>` : ''}
+        <button class="result-btn btn-home" onclick="showView('units')">🏠 Units</button>
+      </div>
+    </div>`;
+      if (pct >= 80) launchConfetti();
+      showMascotMsg(pct >= 80 ? 'Amazing! 🌟 You did it!' : 'Keep practising! 💪 You\'ll get it!', pct >= 80);
+    }
+    function practiceWrong() {
+      if (!quizState.wrongOnes.length) return;
+      quizState = { questions: [...quizState.wrongOnes], current: 0, score: 0, answers: [], wrongOnes: [] };
+      renderQuizQuestion();
+    }
+
+    // ============================================================
+    // DICTATION
+    // ============================================================
+    function renderDictation() {
+      if (!currentUnit) return;
+      const container = document.getElementById('dictationContent');
+      const vocab = currentUnit.vocabulary;
+      const examples = vocab.map(v => v.example);
+      const items = [
+        ...vocab.slice(0, 8).map(v => ({ type: 'word', text: v.word, label: 'Level 1: Word' })),
+        ...vocab.slice(0, 6).map(v => ({ type: 'sentence', text: v.example, label: 'Level 2: Sentence' }))
+      ];
+      container.innerHTML = '';
+      items.forEach((item, i) => {
+        let listenCount = 3;
+        const div = document.createElement('div');
+        div.className = 'dictation-item fade-in-up';
+        div.style.animationDelay = `${i * 0.05}s`;
+        const divId = `dict_${i}`;
+        div.innerHTML = `
+      <div class="dictation-header">
+        <span class="dictation-type">${item.label}</span>
+        <span style="font-size:0.8rem;color:var(--muted)">${i + 1} of ${items.length}</span>
+      </div>
+      <div class="listen-area">
+        <button class="listen-btn" id="${divId}_btn" onclick="dictListen('${item.text.replace(/'/g, "\\'")}','${divId}')">
+          🎧 Listen
+        </button>
+        <span class="listen-count" id="${divId}_count">3 listens left</span>
+        <label class="speed-toggle"><input type="checkbox" id="${divId}_slow"> 🐢 Slow</label>
+      </div>
+      <textarea class="dictation-textarea" id="${divId}_input" placeholder="Type what you hear..."></textarea>
+      <div style="display:flex;gap:0.7rem;margin-top:0.5rem">
+        <button class="check-btn" onclick="checkDictation('${item.text.replace(/'/g, "\\'")}','${divId}')">Check ✓</button>
+      </div>
+      <div class="dictation-result" id="${divId}_result"></div>`;
+        container.appendChild(div);
+      });
+    }
+    let dictListenCounts = {};
+    function dictListen(text, id) {
+      if (!dictListenCounts[id]) dictListenCounts[id] = 3;
+      if (dictListenCounts[id] <= 0) return;
+      dictListenCounts[id]--;
+      const slow = document.getElementById(`${id}_slow`)?.checked || false;
+      speakText(text, slow);
+      const countEl = document.getElementById(`${id}_count`);
+      countEl.textContent = `${dictListenCounts[id]} listen${dictListenCounts[id] !== 1 ? 's' : ''} left`;
+      if (dictListenCounts[id] <= 0) { document.getElementById(`${id}_btn`).disabled = true; countEl.textContent = 'No more listens'; }
+    }
+    function checkDictation(original, id) {
+      const input = document.getElementById(`${id}_input`);
+      const userText = input.value.trim();
+      const result = document.getElementById(`${id}_result`);
+      if (!userText) { result.style.display = 'block'; result.innerHTML = '<p>Please type something first!</p>'; return; }
+      const origWords = original.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/);
+      const userWords = userText.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/);
+      let correct = 0;
+      let html = '<div style="margin-bottom:0.5rem;font-weight:700">Word by word check:</div><div>';
+      const maxLen = Math.max(origWords.length, userWords.length);
+      const errors = [];
+      for (let i = 0; i < origWords.length; i++) {
+        const ow = origWords[i]; const uw = (userWords[i] || '').trim();
+        const ok = uw === ow || levenshtein(uw, ow) <= 1;
+        if (ok) { correct++; html += `<span class="word-result word-ok">${ow}</span>`; }
+        else { errors.push({ expected: ow, got: uw }); html += `<span class="word-result word-err">${uw || '(missing)'}<span class="word-fix">→${ow}</span></span>`; }
+      }
+      html += `</div><div style="margin-top:0.5rem;font-weight:600">${correct}/${origWords.length} words correct</div>`;
+      if (errors.length) {
+        html += `<div class="weakness-box"><strong>💡 Focus on:</strong> ${errors.map(e => `"${e.expected}"`).join(', ')}</div>`;
+      }
+      result.innerHTML = html;
+      result.style.display = 'block';
+    }
+
+    // ============================================================
+    // TRANSLATION
+    // ============================================================
+    function renderTranslation() {
+      if (!currentUnit) return;
+      const container = document.getElementById('translationContent');
+      const vocab = currentUnit.vocabulary;
+      const pairs = vocab.slice(0, 8);
+      container.innerHTML = '';
+      // EN → AR
+      const h1 = document.createElement('h3');
+      h1.textContent = '🔤 English → Arabic Translation';
+      h1.style = 'margin-bottom:1rem';
+      container.appendChild(h1);
+      pairs.slice(0, 4).forEach((v, i) => {
+        const div = document.createElement('div');
+        div.className = 'translation-item fade-in-up';
+        div.innerHTML = `
+      <div class="translation-direction"><span class="direction-badge en-badge">EN</span> → <span class="direction-badge ar-badge">AR</span></div>
+      <div class="source-text">${v.example}</div>
+      <textarea class="dictation-textarea" id="tr_en_${i}" placeholder="اكتب الترجمة بالعربية هنا..." dir="rtl" style="direction:rtl;text-align:right;height:70px"></textarea>
+      <div style="display:flex;gap:0.7rem;margin-top:0.5rem;flex-wrap:wrap">
+        <button class="check-btn" onclick="checkTranslation('${v.arabic}','tr_en_${i}','trfb_en_${i}','ar')">Check</button>
+        <button class="hint-btn" onclick="document.getElementById('tr_en_${i}').value='${v.arabic}'">💡 Show Answer</button>
+      </div>
+      <div id="trfb_en_${i}" style="display:none" class="feedback-box"></div>`;
+        container.appendChild(div);
+      });
+      const h2 = document.createElement('h3');
+      h2.textContent = '🔤 Arabic → English Translation';
+      h2.style = 'margin:1.5rem 0 1rem';
+      container.appendChild(h2);
+      pairs.slice(4, 8).forEach((v, i) => {
+        const div = document.createElement('div');
+        div.className = 'translation-item fade-in-up';
+        div.innerHTML = `
+      <div class="translation-direction"><span class="direction-badge ar-badge">AR</span> → <span class="direction-badge en-badge">EN</span></div>
+      <div class="source-text arabic">${v.arabic}</div>
+      <textarea class="dictation-textarea" id="tr_ar_${i}" placeholder="Write the English translation here..." style="height:70px"></textarea>
+      <div style="display:flex;gap:0.7rem;margin-top:0.5rem;flex-wrap:wrap">
+        <button class="check-btn" onclick="checkTranslation('${v.word}','tr_ar_${i}','trfb_ar_${i}','en')">Check</button>
+        <button class="hint-btn" onclick="document.getElementById('tr_ar_${i}').value='${v.word}'">💡 Show Answer</button>
+      </div>
+      <div id="trfb_ar_${i}" style="display:none" class="feedback-box"></div>`;
+        container.appendChild(div);
+      });
+    }
+    function checkTranslation(correct, inputId, fbId, lang) {
+      const input = document.getElementById(inputId);
+      const fb = document.getElementById(fbId);
+      const userAns = input.value.trim().toLowerCase().replace(/[.,!?]/g, '');
+      const corrAns = correct.toLowerCase().replace(/[.,!?]/g, '');
+      const isOk = userAns.includes(corrAns.substring(0, Math.floor(corrAns.length * 0.7))) || levenshtein(userAns, corrAns) <= 3;
+      fb.className = `feedback-box ${isOk ? 'correct-fb' : 'wrong-fb'}`;
+      fb.innerHTML = `<div class="feedback-title">${isOk ? '✅ Great translation!' : '💡 Suggested answer:'}</div><div class="feedback-text"><strong>${correct}</strong></div>`;
+      fb.style.display = 'block';
+    }
+
+    // ============================================================
+    // DASHBOARD
+    // ============================================================
+    function renderDashboard() {
+      const data = curriculumData[`grade${currentGrade}`];
+      const scores = LS.get(gradeKey('quiz_scores'), {});
+      const saved = getSavedWords();
+      const completed = getCompletedUnits();
+      const achievements = getAchievements();
+      const scoreVals = Object.values(scores).map(s => Math.round(s.score / s.total * 100));
+      const avgScore = scoreVals.length ? Math.round(scoreVals.reduce((a, b) => a + b, 0) / scoreVals.length) : 0;
+      const grid = document.getElementById('dashboardGrid');
+      grid.innerHTML = `
+    <div class="dash-card bounce-in" style="border-top:4px solid var(--sky)">
+      <div class="dash-num" style="color:var(--sky)">${completed.length}<span style="font-size:1.2rem;color:var(--muted)">/${data.units.length}</span></div>
+      <div class="dash-label">Units Completed</div>
+    </div>
+    <div class="dash-card bounce-in" style="border-top:4px solid var(--mint);animation-delay:0.1s">
+      <div class="dash-num" style="color:var(--mint)">${saved.length}</div>
+      <div class="dash-label">Words Saved</div>
+    </div>
+    <div class="dash-card bounce-in" style="border-top:4px solid var(--sun);animation-delay:0.2s">
+      <div class="dash-num" style="color:#a07800">${avgScore}%</div>
+      <div class="dash-label">Average Score</div>
+    </div>
+    <div class="dash-card bounce-in" style="border-top:4px solid var(--grape);animation-delay:0.3s">
+      <div class="dash-num" style="color:var(--grape)">${achievements.length}</div>
+      <div class="dash-label">Achievements</div>
+    </div>`;
+      const badgesGrid = document.getElementById('badgesGrid');
+      const allBadges = ['Unit 1 Master', 'Unit 2 Master', 'Unit 3 Master', 'Unit 4 Master', 'Unit 5 Master', 'Unit 6 Master', 'Unit 7 Master', 'Unit 8 Master', 'Unit 9 Master', 'Vocab Champion', 'Quiz Master'];
+      badgesGrid.innerHTML = allBadges.map(b => {
+        const earned = achievements.includes(b);
+        return `<div class="badge ${earned ? 'badge-earned' : 'badge-locked'}">${earned ? '🏅' : '🔒'} ${b}</div>`;
+      }).join('');
+      if (saved.length >= 10) addAchievement('Vocab Champion');
+      if (scoreVals.every(s => s >= 80)) addAchievement('Quiz Master');
+      const upl = document.getElementById('unitProgressList');
+      upl.innerHTML = data.units.map(unit => {
+        const s = scores[unit.id];
+        const pct = s ? Math.round(s.score / s.total * 100) : 0;
+        return `<div class="upl-item"><span class="upl-name">${unit.emoji} Unit ${unit.number}: ${unit.title.split(':')[1] || unit.title}</span><div class="upl-bar"><div class="upl-fill" style="width:${pct}%"></div></div><span class="upl-pct">${pct}%</span></div>`;
+      }).join('');
+    }
+    function updateTopProgress() {
+      if (!currentGrade) return;
+      const data = curriculumData[`grade${currentGrade}`];
+      const completed = getCompletedUnits();
+      const pct = Math.round(completed.length / data.units.length * 100);
+      document.getElementById('topProgressBar').style.width = pct + '%';
+      document.getElementById('topProgressText').textContent = pct + '%';
+    }
+
+    // ============================================================
+    // SPEECH SYNTHESIS
+    // ============================================================
+    function speakText(text, slow = false) {
+      if (!window.speechSynthesis) return;
+      const utterance = new SpeechSynthesisUtterance(text.replace(/<[^>]+>/g, ''));
+      utterance.lang = 'en-US';
+      utterance.rate = slow ? 0.6 : 0.9;
+      utterance.pitch = 1.1;
+      const voices = speechSynthesis.getVoices();
+      const preferred = voices.find(v => v.lang === 'en-US' && v.name.includes('Google')) || voices.find(v => v.lang === 'en-US') || voices[0];
+      if (preferred) utterance.voice = preferred;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }
+
+    // ============================================================
+    // SOUND EFFECTS
+    // ============================================================
+    function playSound(type) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        if (type === 'correct') { osc.frequency.setValueAtTime(523, ctx.currentTime); osc.frequency.setValueAtTime(659, ctx.currentTime + 0.1); osc.frequency.setValueAtTime(784, ctx.currentTime + 0.2); }
+        else { osc.frequency.setValueAtTime(300, ctx.currentTime); osc.frequency.setValueAtTime(200, ctx.currentTime + 0.1); }
+        gain.gain.setValueAtTime(0.3, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+        osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.4);
+      } catch (e) { }
+    }
+
+    // ============================================================
+    // CONFETTI
+    // ============================================================
+    function launchConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      canvas.style.display = 'block';
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+      const pieces = [];
+      const colors = ['#4A90D9', '#4BC8A0', '#FFD740', '#FF6B6B', '#9B59B6', '#FF9F68'];
+      for (let i = 0; i < 120; i++) pieces.push({ x: Math.random() * canvas.width, y: -20, r: Math.random() * 8 + 4, color: colors[Math.floor(Math.random() * colors.length)], speed: Math.random() * 4 + 2, angle: Math.random() * 360, spin: Math.random() * 10 - 5 });
+      let frame = 0;
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+          ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.angle * Math.PI / 180);
+          ctx.fillStyle = p.color; ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 0.6);
+          ctx.restore();
+          p.y += p.speed; p.x += Math.sin(p.angle) * 0.5; p.angle += p.spin;
+        });
+        frame++;
+        if (frame < 150) requestAnimationFrame(draw);
+        else { ctx.clearRect(0, 0, canvas.width, canvas.height); canvas.style.display = 'none'; }
+      }
+      draw();
+    }
+
+    // ============================================================
+    // MASCOT
+    // ============================================================
+    function showMascotMsg(msg, jump = false) {
+      const mascot = document.getElementById('mascot');
+      document.getElementById('mascotMsg').textContent = msg;
+      mascot.classList.add('show-msg');
+      if (jump) mascot.classList.add('jumping');
+      setTimeout(() => { mascot.classList.remove('show-msg', 'jumping'); }, 3500);
+    }
+    function toggleMascot() {
+      const mascot = document.getElementById('mascot');
+      if (mascot.classList.contains('show-msg')) mascot.classList.remove('show-msg');
+      else { const msgs = ['Keep learning! 📚', 'You can do it! 💪', 'Great effort! 🌟', 'Practice makes perfect! 🎯', 'Amazing work! 🎉']; showMascotMsg(msgs[Math.floor(Math.random() * msgs.length)]); }
+    }
+
+    // ============================================================
+    // DARK MODE
+    // ============================================================
+    function toggleDark() {
+      darkMode = !darkMode;
+      document.body.classList.toggle('dark', darkMode);
+      document.getElementById('darkModeBtn').textContent = darkMode ? '☀️' : '🌙';
+      LS.set('settings_dark', darkMode);
+    }
+
+    // ============================================================
+    // SIDEBAR (mobile)
+    // ============================================================
+    function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('open'); }
+    function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('open'); }
+
+    // ============================================================
+    // MODAL
+    // ============================================================
+    function openModal(id) { document.getElementById(id).classList.add('open'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+    document.querySelectorAll('.modal').forEach(m => m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); }));
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    window.addEventListener('load', () => {
+      if (LS.get('settings_dark', false)) { darkMode = true; document.body.classList.add('dark'); document.getElementById('darkModeBtn').textContent = '☀️'; }
+      const lastGrade = LS.get('settings_selected_grade', null);
+      if (lastGrade) { /* Could auto-select but we'll show landing for choice */ }
+      setTimeout(() => showMascotMsg('Welcome! Choose your grade to begin! 🎓'), 1000);
+      // preload voices
+      speechSynthesis.getVoices();
+      speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+    });
+  </script>
+</body>
+
+</html>
